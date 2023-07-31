@@ -2,6 +2,7 @@ package ru.academits.shaduro.range.program;
 
 import ru.academits.shaduro.range.Range;
 
+import java.util.Arrays;
 import java.util.Scanner;
 
 public class Program {
@@ -19,38 +20,24 @@ public class Program {
 
         Range range = new Range(from, to);
 
-        System.out.println("Длина 1-ого диапазона  = " + range.getLength(range.getFrom(), range.getTo()));
+        System.out.println("Длина 1-ого диапазона = " + range.getLength());
         System.out.println("Число входит в интервал (true = да, false = нет.) = " + range.isInside(number));
 
-        range.setFrom(3);
-        range.setTo(5);
+        range.setFrom(12);
+        range.setTo(16);
 
-        System.out.println("Длина 2-ого диапазона = " + range.getLength(range.getFrom(), range.getTo()));
+        System.out.println("Длина 2-ого диапазона = " + range.getLength());
         System.out.println("Число входит в интервал (true = да, false = нет.) =  " + range.isInside(number));
 
-        Range intersectionRange = range.getIntersection(from, to);
+        Range range1 = new Range(from, to);
 
-        if (intersectionRange == null) {
-            System.out.println("Пересечения нет.");
-        } else {
-            System.out.println("Результат проверки пересечения = "
-                    + intersectionRange.getFrom() + " ; " + intersectionRange.getTo());
-        }
+        Range [] intersectionRange = range.getIntersection(range1);
+        System.out.println("Результат проверки пересечения = " + Arrays.toString(intersectionRange));
 
-        Range[] arrayunificationRange = range.getUnification(from, to);
+        Range[] union = range.getUnion(range1);
+        System.out.println("Объединение двух интервалов = " + Arrays.toString(union));
 
-        for (Range e : arrayunificationRange) {
-            System.out.println("Объединение двух интервалов = " + e.getFrom() + " ; " + e.getTo());
-        }
-
-        Range[] arrayDifference = range.getDifference(from, to);
-
-        if (arrayDifference == null) {
-            System.out.println("Пустое множество.");
-        } else {
-            for (Range e : arrayDifference) {
-                System.out.println("Разница интервалов = " + e.getFrom() + e.getTo());
-            }
-        }
+        Range[] difference = range.getDifference(range1);
+        System.out.println("Разница интервалов = " + Arrays.toString(difference));
     }
 }
