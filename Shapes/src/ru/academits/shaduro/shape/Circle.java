@@ -1,11 +1,17 @@
-package ru.academits.shaduro.shape.shape;
-
-import ru.academits.shaduro.shape.Shape;
+package ru.academits.shaduro.shape;
 
 public class Circle implements Shape {
-    private final double radius;
+    private double radius;
 
     public Circle(double radius) {
+        this.radius = radius;
+    }
+
+    public double getRadius() {
+        return radius;
+    }
+
+    public void setRadius(double radius) {
         this.radius = radius;
     }
 
@@ -21,7 +27,7 @@ public class Circle implements Shape {
 
     @Override
     public double getArea() {
-        return Math.PI * Math.pow(radius, 2);
+        return Math.PI * (radius * radius);
     }
 
     @Override
@@ -31,7 +37,7 @@ public class Circle implements Shape {
 
     @Override
     public String toString() {
-        return "Circle = {" + "radius = " + radius + ", Area = " + getArea() + ", Perimeter = " + getPerimeter() + '}';
+        return "Circle = {radius = " + radius + ", Area = " + getArea() + ", Perimeter = " + getPerimeter() + '}';
     }
 
     @Override

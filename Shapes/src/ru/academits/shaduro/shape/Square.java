@@ -1,11 +1,17 @@
-package ru.academits.shaduro.shape.shape;
-
-import ru.academits.shaduro.shape.Shape;
+package ru.academits.shaduro.shape;
 
 public class Square implements Shape {
-    private final double sideLength;
+    private double sideLength;
 
     public Square(double sideLength) {
+        this.sideLength = sideLength;
+    }
+
+    public double getSideLength() {
+        return sideLength;
+    }
+
+    public void setSideLength(double sideLength) {
         this.sideLength = sideLength;
     }
 
@@ -26,12 +32,12 @@ public class Square implements Shape {
 
     @Override
     public double getPerimeter() {
-        return sideLength / 4;
+        return sideLength * 4;
     }
 
     @Override
     public String toString() {
-        return "Square = {" + "size = " + sideLength + ", Area = " + getArea() + ", Perimeter = " + getPerimeter() + '}';
+        return "Square = {size = " + sideLength + ", Area = " + getArea() + ", Perimeter = " + getPerimeter() + '}';
     }
 
     @Override
