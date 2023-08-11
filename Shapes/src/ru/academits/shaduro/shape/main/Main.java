@@ -80,10 +80,10 @@ public class Main {
 
     private static Shape getShapeWithSecondPerimeter(Shape... shapes) {
         if (shapes.length == 0) {
-            throw new IllegalArgumentException("Массив фигур пустой.");
+            System.out.println("Массив фигур пустой.");
         }
         if (shapes.length == 1) {
-            throw new IllegalArgumentException("В массиве одна фигура.");
+            System.out.println("В массиве одна фигура.");
         }
 
         Arrays.sort(shapes, new ShapePerimeterComparator());
