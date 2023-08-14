@@ -1,4 +1,4 @@
-package main;
+package ru.academits.shaduro.vector.vector.main;
 
 import ru.academits.shaduro.vector.vector.Vector;
 
