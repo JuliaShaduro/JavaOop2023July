@@ -1,3 +1,5 @@
+package main;
+
 import ru.academits.shaduro.vector.vector.Vector;
 
 public class Main {
