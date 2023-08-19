@@ -1,11 +1,6 @@
 package ru.academits.shaduro.range.program;
 
 import ru.academits.shaduro.range.Range;
-/*1.
-
-2. Разность нужно сделать без использования getIntersection, чтобы не создавался лишний объект
-
-*/
 import java.util.Arrays;
 import java.util.Scanner;
 
