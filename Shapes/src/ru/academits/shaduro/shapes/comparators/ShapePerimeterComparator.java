@@ -1,6 +1,6 @@
-package ru.academits.shaduro.shape.comparator;
+package ru.academits.shaduro.shapes.comparators;
 
-import ru.academits.shaduro.shape.Shape;
+import ru.academits.shaduro.shapes.Shape;
 
 import java.util.Comparator;
 

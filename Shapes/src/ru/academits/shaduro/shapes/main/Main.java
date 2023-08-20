@@ -1,12 +1,7 @@
-package ru.academits.shaduro.shape.main;
+package ru.academits.shaduro.shapes.main;
 
-import ru.academits.shaduro.shape.Shape;
-import ru.academits.shaduro.shape.comparator.ShapeAreaComparator;
-import ru.academits.shaduro.shape.comparator.ShapePerimeterComparator;
-import ru.academits.shaduro.shape.Circle;
-import ru.academits.shaduro.shape.Rectangle;
-import ru.academits.shaduro.shape.Square;
-import ru.academits.shaduro.shape.Triangle;
+import ru.academits.shaduro.shapes.*;
+import ru.academits.shaduro.shapes.comparators.*;
 
 import java.util.Arrays;
 
@@ -55,18 +50,23 @@ public class Main {
         System.out.println("Равенство объектов через equals = " + rectangle1.equals(rectangle2));
         System.out.println("______________________");
 
-        Shape[] shapesArray = {square1, triangle1, rectangle1, circle1, circle2};
-        Shape[] shapesArray2 = {};
+        Shape[] shapes1 = {square1, triangle1, rectangle1, circle1, circle2};
 
-        Shape shapeMaxArea = getShapeWithMaxArea(shapesArray2);
+        Shape shapeWithMaxArea = getShapeWithMaxArea(shapes1);
 
-        System.out.println("Площадь максимальной фигуры = " + shapeMaxArea.getArea());
-        System.out.println(shapeMaxArea);
+        System.out.println("Фигура с максимальной площадью = " + new StringBuilder(shapeWithMaxArea.toString()).
+                delete(shapeWithMaxArea.toString().indexOf(" ="), shapeWithMaxArea.toString().length()));
+//        Если так, то надо делать переменную StringBuilder.
+        //  new StringBuilder - потенциальный объект на удаление сборщиком ,если без переменной?
+//
+//        StringBuilder st = new StringBuilder(shapeWithMaxArea.toString());
+//        st.delete(st.indexOf(" ="), st.length());
+//        System.out.println(st);
 
-        Shape shapeWithSecondPerimeter = getShapeWithSecondPerimeter(shapesArray);
+        Shape shapeWithSecondPerimeter = getShapeWithSecondPerimeter(shapes1);
 
-        System.out.println("Периметр 2-ой фигуры = " + shapeWithSecondPerimeter.getPerimeter());
-        System.out.println(shapeWithSecondPerimeter);
+        System.out.println("Фигура со 2-ым периметром по величине = " + new StringBuilder(shapeWithSecondPerimeter.toString()).
+                delete(shapeWithSecondPerimeter.toString().indexOf(" ="), shapeWithSecondPerimeter.toString().length()));
     }
 
     private static Shape getShapeWithMaxArea(Shape... shapes) {
@@ -80,10 +80,10 @@ public class Main {
 
     private static Shape getShapeWithSecondPerimeter(Shape... shapes) {
         if (shapes.length == 0) {
-            System.out.println("Массив фигур пустой.");
+            throw new IllegalArgumentException("Массив фигур пустой.");
         }
         if (shapes.length == 1) {
-            System.out.println("В массиве одна фигура.");
+            throw new IllegalArgumentException("В массиве одна фигура.");
         }
 
         Arrays.sort(shapes, new ShapePerimeterComparator());

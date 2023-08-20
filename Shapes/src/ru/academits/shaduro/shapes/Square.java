@@ -1,4 +1,4 @@
-package ru.academits.shaduro.shape;
+package ru.academits.shaduro.shapes;
 
 public class Square implements Shape {
     private double sideLength;
@@ -27,7 +27,7 @@ public class Square implements Shape {
 
     @Override
     public double getArea() {
-        return Math.pow(sideLength, 2);
+        return sideLength * sideLength;
     }
 
     @Override

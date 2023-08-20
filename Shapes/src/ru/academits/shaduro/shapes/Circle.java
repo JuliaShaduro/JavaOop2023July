@@ -1,4 +1,4 @@
-package ru.academits.shaduro.shape;
+package ru.academits.shaduro.shapes;
 
 public class Circle implements Shape {
     private double radius;
@@ -27,7 +27,7 @@ public class Circle implements Shape {
 
     @Override
     public double getArea() {
-        return Math.PI * (radius * radius);
+        return Math.PI * radius * radius;
     }
 
     @Override

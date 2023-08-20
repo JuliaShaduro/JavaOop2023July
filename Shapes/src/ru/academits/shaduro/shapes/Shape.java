@@ -1,4 +1,4 @@
-package ru.academits.shaduro.shape;
+package ru.academits.shaduro.shapes;
 
 public interface Shape {
     double getWidth();
