@@ -4,7 +4,7 @@ import ru.academits.shaduro.vector.Vector;
 
 public class Main {
     public static void main(String[] args) {
-        Vector vector1 = new Vector(1);
+        Vector vector1 = new Vector(3);
         vector1.multiplyByScalar(-3);
         System.out.println("Умножение вектора1 на скаляр = " + vector1);
         vector1.reverse();

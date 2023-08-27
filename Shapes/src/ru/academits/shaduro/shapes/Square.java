@@ -3,45 +3,45 @@ package ru.academits.shaduro.shapes;
 public class Square implements Shape {
     private double sideLength;
 
-    public Square(double sideLength) {
+    public Square (double sideLength) {
         this.sideLength = sideLength;
     }
 
-    public double getSideLength() {
+    public double getSideLength () {
         return sideLength;
     }
 
-    public void setSideLength(double sideLength) {
+    public void setSideLength (double sideLength) {
         this.sideLength = sideLength;
     }
 
     @Override
-    public double getWidth() {
+    public double getWidth () {
         return sideLength;
     }
 
     @Override
-    public double getHeight() {
+    public double getHeight () {
         return sideLength;
     }
 
     @Override
-    public double getArea() {
+    public double getArea () {
         return sideLength * sideLength;
     }
 
     @Override
-    public double getPerimeter() {
+    public double getPerimeter () {
         return sideLength * 4;
     }
 
     @Override
-    public String toString() {
-        return "Square = {size = " + sideLength + ", Area = " + getArea() + ", Perimeter = " + getPerimeter() + '}';
+    public String toString () {
+        return "Square = {size = " + sideLength + '}';
     }
 
     @Override
-    public boolean equals(Object o) {
+    public boolean equals (Object o) {
         if (this == o) {
             return true;
         }
@@ -55,7 +55,7 @@ public class Square implements Shape {
     }
 
     @Override
-    public int hashCode() {
+    public int hashCode () {
         final int prime = 37;
         return prime + Double.hashCode(sideLength);
     }
