@@ -7,14 +7,16 @@ import java.util.Arrays;
 
 public class Main {
     public static void main (String[] args) {
-        Shape[] shapes = {new Square(155), new Triangle(1, -5, 3, 155, 9, 14), new Rectangle(1, 23), new Circle(3), new Circle(15)};
+        Shape[] shapes = {new Square(155),
+                new Triangle(1, -5, 3, 155, 9, 14),
+                new Rectangle(1, 23),
+                new Circle(3),
+                new Circle(15)};
 
         Shape shapeWithMaxArea = getShapeWithMaxArea(shapes);
-
         System.out.println("Фигура с максимальной площадью = " + shapeWithMaxArea);
 
         Shape shapeWithSecondPerimeter = getShapeWithSecondPerimeter(shapes);
-
         System.out.println("Фигура со 2-ым периметром по величине = " + shapeWithSecondPerimeter);
     }
 

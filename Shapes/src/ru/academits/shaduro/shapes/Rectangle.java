@@ -39,7 +39,7 @@ public class Rectangle implements Shape {
 
     @Override
     public String toString () {
-        return "Rectangle = { widthSide = " + width + ", heightSide = " + height + '}';
+        return "Rectangle = { width = " + width + ", height = " + height + '}';
     }
 
     @Override
