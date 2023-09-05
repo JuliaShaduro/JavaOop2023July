@@ -3,7 +3,7 @@ package ru.academits.shaduro.vector.main;
 import ru.academits.shaduro.vector.Vector;
 
 public class Main {
-    public static void main(String[] args) {
+    public static void main (String[] args) {
         Vector vector1 = new Vector(3);
         vector1.multiplyByScalar(-3);
         System.out.println("Умножение вектора1 на скаляр = " + vector1);
