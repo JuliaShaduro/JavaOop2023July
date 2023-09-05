@@ -1,11 +1,11 @@
 package ru.academits.shaduro.shapes;
 
 public interface Shape {
-    double getWidth ();
+    double getWidth();
 
-    double getHeight ();
+    double getHeight();
 
-    double getArea ();
+    double getArea();
 
-    double getPerimeter ();
+    double getPerimeter();
 }

@@ -8,7 +8,7 @@ public class Triangle implements Shape {
     private double x3;
     private double y3;
 
-    public Triangle (double x1, double y1, double x2, double y2, double x3, double y3) {
+    public Triangle(double x1, double y1, double x2, double y2, double x3, double y3) {
         this.x1 = x1;
         this.y1 = y1;
         this.x2 = x2;
@@ -17,86 +17,86 @@ public class Triangle implements Shape {
         this.y3 = y3;
     }
 
-    public double getX1 () {
+    public double getX1() {
         return x1;
     }
 
-    public void setX1 (double x1) {
+    public void setX1(double x1) {
         this.x1 = x1;
     }
 
-    public double getY1 () {
+    public double getY1() {
         return y1;
     }
 
-    public void setY1 (double y1) {
+    public void setY1(double y1) {
         this.y1 = y1;
     }
 
-    public double getX2 () {
+    public double getX2() {
         return x2;
     }
 
-    public void setX2 (double x2) {
+    public void setX2(double x2) {
         this.x2 = x2;
     }
 
-    public double getY2 () {
+    public double getY2() {
         return y2;
     }
 
-    public void setY2 (double y2) {
+    public void setY2(double y2) {
         this.y2 = y2;
     }
 
-    public double getX3 () {
+    public double getX3() {
         return x3;
     }
 
-    public void setX3 (double x3) {
+    public void setX3(double x3) {
         this.x3 = x3;
     }
 
-    public double getY3 () {
+    public double getY3() {
         return y3;
     }
 
-    public void setY3 (double y3) {
+    public void setY3(double y3) {
         this.y3 = y3;
     }
 
     @Override
-    public double getWidth () {
+    public double getWidth() {
         return Math.max(Math.max(x1, x2), x3) - Math.min(Math.min(x1, x2), x3);
     }
 
     @Override
-    public double getHeight () {
+    public double getHeight() {
         return Math.max(Math.max(y1, y2), y3) - Math.min(Math.min(y1, y2), y3);
     }
 
     @Override
-    public double getArea () {
+    public double getArea() {
         return Math.abs((x2 - x1) * (y3 - y1) - (x3 - x1) * (y2 - y1)) / 2;
     }
 
     @Override
-    public double getPerimeter () {
+    public double getPerimeter() {
         return getSideLength(x1, y1, x2, y2) + getSideLength(x2, y2, x3, y3) + getSideLength(x1, y1, x3, y3);
     }
 
-    private static double getSideLength (double x1, double y1, double x2, double y2) {
+    private static double getSideLength(double x1, double y1, double x2, double y2) {
         return Math.sqrt(Math.pow(x2 - x1, 2) + Math.pow(y2 - y1, 2));
     }
 
     @Override
-    public String toString () {
+    public String toString() {
         return "Triangle = {(" + x1 + "; " + y1 + "), (" + x2 + "; " + y2 + "), (" + x3 + "; " + y3
                 + ")}";
     }
 
     @Override
-    public boolean equals (Object o) {
+    public boolean equals(Object o) {
         if (this == o) {
             return true;
         }
@@ -111,7 +111,7 @@ public class Triangle implements Shape {
     }
 
     @Override
-    public int hashCode () {
+    public int hashCode() {
         final int prime = 37;
         int hash = 1;
         hash = hash * prime + Double.hashCode(x1);

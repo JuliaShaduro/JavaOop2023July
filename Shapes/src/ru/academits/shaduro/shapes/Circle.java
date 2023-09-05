@@ -3,45 +3,45 @@ package ru.academits.shaduro.shapes;
 public class Circle implements Shape {
     private double radius;
 
-    public Circle (double radius) {
+    public Circle(double radius) {
         this.radius = radius;
     }
 
-    public double getRadius () {
+    public double getRadius() {
         return radius;
     }
 
-    public void setRadius (double radius) {
+    public void setRadius(double radius) {
         this.radius = radius;
     }
 
     @Override
-    public double getWidth () {
+    public double getWidth() {
         return radius * 2;
     }
 
     @Override
-    public double getHeight () {
+    public double getHeight() {
         return getWidth();
     }
 
     @Override
-    public double getArea () {
+    public double getArea() {
         return Math.PI * radius * radius;
     }
 
     @Override
-    public double getPerimeter () {
+    public double getPerimeter() {
         return 2 * Math.PI * radius;
     }
 
     @Override
-    public String toString () {
+    public String toString() {
         return "Circle = {radius = " + radius + '}';
     }
 
     @Override
-    public boolean equals (Object o) {
+    public boolean equals(Object o) {
         if (this == o) {
             return true;
         }
@@ -55,7 +55,7 @@ public class Circle implements Shape {
     }
 
     @Override
-    public int hashCode () {
+    public int hashCode() {
         final int prime = 37;
         return prime + Double.hashCode(radius);
     }

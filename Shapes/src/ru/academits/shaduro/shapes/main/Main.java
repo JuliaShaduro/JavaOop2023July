@@ -6,7 +6,7 @@ import ru.academits.shaduro.shapes.comparators.*;
 import java.util.Arrays;
 
 public class Main {
-    public static void main (String[] args) {
+    public static void main(String[] args) {
         Shape[] shapes = {
                 new Square(155),
                 new Triangle(1, -5, 3, 155, 9, 14),
@@ -22,7 +22,7 @@ public class Main {
         System.out.println("Фигура со 2-ым периметром по величине = " + shapeWithSecondPerimeter);
     }
 
-    private static Shape getShapeWithMaxArea (Shape... shapes) {
+    private static Shape getShapeWithMaxArea(Shape... shapes) {
         if (shapes.length == 0) {
             throw new IllegalArgumentException("Массив фигур пустой.");
         }
@@ -31,7 +31,7 @@ public class Main {
         return shapes[shapes.length - 1];
     }
 
-    private static Shape getShapeWithSecondPerimeter (Shape... shapes) {
+    private static Shape getShapeWithSecondPerimeter(Shape... shapes) {
         if (shapes.length == 0) {
             throw new IllegalArgumentException("Массив фигур пустой.");
         }
