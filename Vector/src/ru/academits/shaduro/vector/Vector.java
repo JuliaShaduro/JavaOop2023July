@@ -5,7 +5,7 @@ import java.util.Arrays;
 public class Vector {
     private double[] coordinates;
 
-    public Vector (int coordinatesCount) {
+    public Vector(int coordinatesCount) {
         if (coordinatesCount <= 0) {
             throw new IllegalArgumentException("Количество координат должно быть больше 0, coordinatesCount = " + coordinatesCount);
         }
@@ -13,11 +13,11 @@ public class Vector {
         coordinates = new double[coordinatesCount];
     }
 
-    public Vector (Vector vector) {
+    public Vector(Vector vector) {
         coordinates = Arrays.copyOf(vector.coordinates, vector.coordinates.length);
     }
 
-    public Vector (double... coordinates) {
+    public Vector(double... coordinates) {
         if (coordinates.length == 0) {
             throw new IllegalArgumentException("Количество координат = 0");
         }
@@ -25,7 +25,7 @@ public class Vector {
         this.coordinates = Arrays.copyOf(coordinates, coordinates.length);
     }
 
-    public Vector (int coordinatesCount, double... coordinates) {
+    public Vector(int coordinatesCount, double... coordinates) {
         if (coordinatesCount <= 0) {
             throw new IllegalArgumentException("Количество координат должно быть больше 0, coordinatesCount = " + coordinatesCount);
         }
@@ -33,12 +33,12 @@ public class Vector {
         this.coordinates = Arrays.copyOf(coordinates, coordinatesCount);
     }
 
-    public int getCoordinatesCount () {
+    public int getCoordinatesCount() {
         return coordinates.length;
     }
 
     @Override
-    public String toString () {
+    public String toString() {
         StringBuilder stringBuilder = new StringBuilder();
         stringBuilder.append('{');
 
@@ -51,7 +51,7 @@ public class Vector {
         return stringBuilder.toString();
     }
 
-    public void add (Vector vector) {
+    public void add(Vector vector) {
         if (coordinates.length < vector.coordinates.length) {
             coordinates = Arrays.copyOf(coordinates, vector.coordinates.length);
         }
@@ -61,7 +61,7 @@ public class Vector {
         }
     }
 
-    public void subtract (Vector vector) {
+    public void subtract(Vector vector) {
         if (coordinates.length < vector.coordinates.length) {
             coordinates = Arrays.copyOf(coordinates, vector.coordinates.length);
         }
@@ -71,17 +71,17 @@ public class Vector {
         }
     }
 
-    public void multiplyByScalar (double number) {
+    public void multiplyByScalar(double number) {
         for (int i = 0; i < coordinates.length; i++) {
             coordinates[i] *= number;
         }
     }
 
-    public void reverse () {
+    public void reverse() {
         multiplyByScalar(-1);
     }
 
-    public double getLength () {
+    public double getLength() {
         double sum = 0;
 
         for (double e : coordinates) {
@@ -91,7 +91,7 @@ public class Vector {
         return Math.sqrt(sum);
     }
 
-    public double getCoordinate (int index) {
+    public double getCoordinate(int index) {
         if (index < 0 || index >= coordinates.length) {
             throw new IndexOutOfBoundsException("Индекс = " + index + " за пределами диапазона {0; "
                     + (coordinates.length - 1) + "}");
@@ -100,7 +100,7 @@ public class Vector {
         return coordinates[index];
     }
 
-    public void setCoordinate (int index, double coordinate) {
+    public void setCoordinate(int index, double coordinate) {
         if (index < 0 || index >= coordinates.length) {
             throw new IndexOutOfBoundsException("Индекс = " + index + " за пределами диапазона {0; "
                     + (coordinates.length - 1) + "}");
@@ -110,7 +110,7 @@ public class Vector {
     }
 
     @Override
-    public boolean equals (Object o) {
+    public boolean equals(Object o) {
         if (this == o) {
             return true;
         }
@@ -125,25 +125,25 @@ public class Vector {
     }
 
     @Override
-    public int hashCode () {
+    public int hashCode() {
         return Arrays.hashCode(coordinates);
     }
 
-    public static Vector getSum (Vector vector1, Vector vector2) {
+    public static Vector getSum(Vector vector1, Vector vector2) {
         Vector resultVector = new Vector(vector1);
         resultVector.add(vector2);
 
         return resultVector;
     }
 
-    public static Vector getDifference (Vector vector1, Vector vector2) {
+    public static Vector getDifference(Vector vector1, Vector vector2) {
         Vector resultVector = new Vector(vector1);
         resultVector.subtract(vector2);
 
         return resultVector;
     }
 
-    public static double getScalarProduct (Vector vector1, Vector vector2) {
+    public static double getScalarProduct(Vector vector1, Vector vector2) {
         int minCoordinatesCount = Math.min(vector1.coordinates.length, vector2.coordinates.length);
         double result = 0;
 
