@@ -1,33 +1,35 @@
 package ru.academits.shaduro.csv;
 
 import java.io.*;
-import java.util.Scanner;
 
 public class Csv {
-    public void convertCSVtoHTML(String readPath, String writePath) {
-        try (Scanner scanner = new Scanner(new FileInputStream(readPath));
-             PrintWriter writer = new PrintWriter(writePath)) {
+    public static void convertCsvToHtml(String inputFilePath, String outputFilePath) {
+        try (BufferedReader bufferedReader = new BufferedReader(new FileReader(inputFilePath));
+             PrintWriter writer = new PrintWriter(outputFilePath)) {
             writer.println("<!DOCTYPE html>");
             writer.println("<html>");
             writer.println("<head>");
-            writer.println("<title>Convert CSV to HTML</title>");
-            writer.println("<meta charset=\"utf-8\">");
+            writer.println("    <title>Convert CSV to HTML</title>");
+            writer.println("    <meta charset=\"utf-8\">");
             writer.println("</head>");
             writer.println("<body>");
             writer.println("<table border=\"1\">");
 
             boolean isNewLine = true;
             boolean isBreakLine = false;
-            boolean characterWriting = true;
+            boolean isCharacterWriting = true;
             boolean putComma = false;
 
-            while (scanner.hasNextLine()) {
-                String line = scanner.nextLine();
+            String line;
+
+            while ((line = bufferedReader.readLine()) != null) {
                 int lineLength = line.length();
 
                 if (isNewLine) {
-                    writer.print("<tr><td>");
+                    writer.println("    <tr>");
+                    writer.print("        <td>");
                 }
+
                 if (isBreakLine) {
                     writer.print("<br/>");
                     isBreakLine = false;
@@ -40,58 +42,76 @@ public class Csv {
                         if (putComma) {
                             writer.print(lineChar);
                             continue;
-                        } else {
-                            writer.print("</td><td>");
-                            characterWriting = false;
-                            if (i + 1 < lineLength) {
-                                if (line.charAt(i + 1) == '"') {
-                                    i++;
-                                    putComma = true;
-                                    isBreakLine = true;
-                                    isNewLine = false;
-                                    characterWriting = true;
-                                    continue;
-                                }
+                        }
+
+                        writer.print("</td>");
+                        writer.println();
+                        writer.print("        <td>");
+                        isCharacterWriting = false;
+
+                        if (i + 1 < lineLength) {
+                            if (line.charAt(i + 1) == '"') {
+                                i++;
+                                putComma = true;
+                                isBreakLine = true;
+                                isNewLine = false;
+                                isCharacterWriting = true;
+                                continue;
                             }
                         }
+
                     } else if (lineChar == '"') {
                         if (i + 1 < lineLength) {
                             if (line.charAt(i + 1) == '"') {
                                 writer.print(lineChar);
                                 i++;
                                 continue;
-                            } else {
-                                putComma = false;
-                                isBreakLine = false;
-                                isNewLine = true;
-                                characterWriting = false;
                             }
+
+                            putComma = false;
+                            isBreakLine = false;
+                            isNewLine = true;
+                            isCharacterWriting = false;
+
                         } else {
-                            characterWriting = false;
+                            isCharacterWriting = false;
                             isNewLine = true;
                             isBreakLine = false;
                             putComma = false;
                         }
                     }
 
-                    if (characterWriting) {
-                        writer.print(lineChar);
+                    if (isCharacterWriting) {
+                        writeChar(writer, lineChar);
                     }
 
-                    characterWriting = true;
+                    isCharacterWriting = true;
                 }
 
                 if (isNewLine) {
-                    writer.print("</td></tr>");
+                    writer.print("</td>");
+                    writer.println();
+                    writer.println("    </tr>");
                 }
             }
 
             writer.println("</table>");
             writer.println("</body>");
             writer.println("</html>");
-        } catch (Exception e) {
-            System.out.println(e.getMessage());
-            System.out.println("Ошибки ввода/вывода.");
+        } catch (IOException e) {
+            System.out.println("Файл не найден.");
+        }
+    }
+
+    private static void writeChar (PrintWriter writer, char symbol) {
+        if (symbol == '>') {
+            writer.print("gt;");
+        } else if (symbol == '<') {
+            writer.print("&lt;");
+        } else if (symbol == '&') {
+            writer.print("&amp;");
+        } else {
+            writer.print(symbol);
         }
     }
 }
