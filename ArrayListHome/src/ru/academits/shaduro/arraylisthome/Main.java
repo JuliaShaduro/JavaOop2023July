@@ -4,19 +4,22 @@ import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Arrays;
 
 public class Main {
-    public static void main(String[] args) {
-        System.out.println(lineArrayList(args[0]));
+    public static void main (String[] args) {
+      //  System.out.println(lineArrayList(args[0]));
 
-        ArrayList<Integer> numbers = new ArrayList<>(Arrays.asList(1, 2, 3, 6, 6, 6, 7));
+        ArrayList<Integer> numbers = new ArrayList<>();
 
         System.out.println(oddNumberArrayList(numbers));
         System.out.println(noRepeatElementsArrayList(numbers));
     }
 
-    public static ArrayList<Integer> noRepeatElementsArrayList(ArrayList<Integer> numbers) {
+    public static ArrayList<Integer> noRepeatElementsArrayList (ArrayList<Integer> numbers) {
+        if (numbers.size() == 0) { //Todo добавила обработку искл. задала вопрос надо ли
+            throw new IndexOutOfBoundsException("Индекс = " + "}");
+        }
+
         ArrayList<Integer> noRepeatElements = new ArrayList<>();
 
         for (Integer num : numbers) {
@@ -28,7 +31,11 @@ public class Main {
         return noRepeatElements;
     }
 
-    public static ArrayList<Integer> oddNumberArrayList(ArrayList<Integer> numbers) {
+    public static ArrayList<Integer> oddNumberArrayList (ArrayList<Integer> numbers) {
+        if (numbers.size() == 0) {
+            throw new IndexOutOfBoundsException("Индекс = " + "}");
+        }
+
         for (int i = 0; i < numbers.size(); i++) {
             if (numbers.get(i) % 2 == 0) {
                 numbers.remove(i);
@@ -40,7 +47,7 @@ public class Main {
         return numbers;
     }
 
-    public static ArrayList<String> lineArrayList(String inputFilePath) {
+    public static ArrayList<String> lineArrayList (String inputFilePath) {
         try (BufferedReader bufferedReader = new BufferedReader(new FileReader(inputFilePath))) {
             ArrayList<String> names = new ArrayList<>();
             String line;
