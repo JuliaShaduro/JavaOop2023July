@@ -6,6 +6,7 @@ public class SinglyLinkedList<T> {
 
     public SinglyLinkedList() {
     }
+
     public SinglyLinkedList(ListItem<T> head) {
         this.head = head;
 
@@ -13,6 +14,7 @@ public class SinglyLinkedList<T> {
             count++;
         }
     }
+
     public int getSize() {
         return count;
     }
@@ -24,6 +26,7 @@ public class SinglyLinkedList<T> {
 
         return head.getData();
     }
+
     public ListItem<T> getElement(int index) {
         this.checkIndex(index);
 
@@ -76,6 +79,7 @@ public class SinglyLinkedList<T> {
         getElement(index - 1).setNext(list);
         count++;
     }
+
     public boolean deleteByData(T data) {
         for (ListItem<T> p = head, prev = null; p != null; prev = p, p = p.getNext()) {
             if (p.getData().equals(data)) {
