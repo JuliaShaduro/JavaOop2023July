@@ -14,11 +14,13 @@ public class myArrayList<T> implements List<T> {
             throw new IllegalArgumentException("Capacity <= 0.");
         }
 
-        items = (T[]) new Object[capacity]; //Todo Что делать с приведением ?
+        //noinspection unchecked
+        items = (T[]) new Object[capacity];
     }
 
     public myArrayList() {
-        items = (T[]) new Object[DEFAULT_CAPACITY]; //Todo Что делать с приведением ?
+        //noinspection unchecked
+        items = (T[]) new Object[DEFAULT_CAPACITY];
     }
 
     private class MyListIterator implements Iterator<T> {

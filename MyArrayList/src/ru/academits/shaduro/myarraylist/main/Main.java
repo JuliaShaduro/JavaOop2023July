@@ -1,3 +1,5 @@
+package ru.academits.shaduro.myarraylist.main;
+
 import ru.academits.shaduro.myarraylist.myArrayList;
 
 public class Main {
