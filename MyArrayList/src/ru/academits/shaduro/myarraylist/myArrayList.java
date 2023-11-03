@@ -257,8 +257,6 @@ public class myArrayList<T> implements List<T> {
         for (int i = 0; i < size; i++) {
             items[i] = null;
         }
-
-        size = 0;
     }
 
     @Override
