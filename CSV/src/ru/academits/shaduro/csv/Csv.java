@@ -3,7 +3,7 @@ package ru.academits.shaduro.csv;
 import java.io.*;
 
 public class Csv {
-    public static void convertCsvToHtml(String inputFilePath, String outputFilePath) {
+    public static void convertCsvToHtml(String inputFilePath, String outputFilePath) throws IOException {
         try (BufferedReader bufferedReader = new BufferedReader(new FileReader(inputFilePath));
              PrintWriter writer = new PrintWriter(outputFilePath)) {
             writer.println("<!DOCTYPE html>");
@@ -27,7 +27,7 @@ public class Csv {
 
                 if (isNewLine) {
                     writer.println("    <tr>");
-                    writer.print("        <td>");
+                    writer.print("        <td><pre>");
                 }
 
                 if (isBreakLine) {
@@ -44,9 +44,9 @@ public class Csv {
                             continue;
                         }
 
-                        writer.print("</td>");
+                        writer.print("</pre></td>");
                         writer.println();
-                        writer.print("        <td>");
+                        writer.print("        <td><pre>");
                         isCharacterWriting = false;
 
                         if (i + 1 < lineLength) {
@@ -89,7 +89,7 @@ public class Csv {
                 }
 
                 if (isNewLine) {
-                    writer.print("</td>");
+                    writer.print("</pre></td>");
                     writer.println();
                     writer.println("    </tr>");
                 }
@@ -98,8 +98,6 @@ public class Csv {
             writer.println("</table>");
             writer.println("</body>");
             writer.println("</html>");
-        } catch (IOException e) {
-            System.out.println("Файл не найден.");
         }
     }
 
