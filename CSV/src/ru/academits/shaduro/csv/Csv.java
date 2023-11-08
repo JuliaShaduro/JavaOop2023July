@@ -101,7 +101,7 @@ public class Csv {
         }
     }
 
-    private static void writeChar (PrintWriter writer, char symbol) {
+    private static void writeChar(PrintWriter writer, char symbol) {
         if (symbol == '>') {
             writer.print("gt;");
         } else if (symbol == '<') {
