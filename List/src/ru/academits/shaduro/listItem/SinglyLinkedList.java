@@ -22,42 +22,30 @@ public class SinglyLinkedList<E> {
         return head.getData();
     }
 
-    private ListItem<E> foundNodeByIndex(int index) {//Todo может быть метод избыточен?
+    private ListItem<E> getItem(int index) {
         ListItem<E> item = head;
 
-        for (int i = 0; i <= index; i++) {
-            if (i == index) {
-                break;
-            }
-
+        for (int i = 0; i < index; i++) {
             item = item.getNext();
         }
 
         return item;
     }
 
-    /*8. getElement(int index):
-   - этот метод должен быть приватным. -//
-    //Todo После исправления ошибок он не вспомогательный и не выдает узел => может быть неприватным?
-   И, в целом, вспомогательные методы должны быть приватными
-   - здесь лучше не делать проверку индекса, ее лучше выполнять в методах, -
-    вызывающих этот метод, т.к. индекс, передаваемый в эти методы, не всегда совпадает с индексом, передаваемым в getElement
-
-    */
     public E get(int index) {
         checkIndex(index);
 
-        return foundNodeByIndex(index).getData();
+        return getItem(index).getData();
     }
 
     public E set(int index, E data) {
         checkIndex(index);
 
-        ListItem<E> node = foundNodeByIndex(index);
-        E oldItem = node.getData();
-        node.setData(data);
+        ListItem<E> item = getItem(index);
+        E oldData = item.getData();
+        item.setData(data);
 
-        return oldItem;
+        return oldData;
     }
 
     public E deleteByIndex(int index) {
@@ -67,13 +55,13 @@ public class SinglyLinkedList<E> {
             return deleteFirst();
         }
 
-        ListItem<E> previousItem1 = foundNodeByIndex(index - 1);
-        E deleteItem1 = previousItem1.getNext().getData();
+        ListItem<E> previousData = getItem(index - 1);
+        E deleteData = previousData.getNext().getData();
 
-        previousItem1.setNext(previousItem1.getNext().getNext());
+        previousData.setNext(previousData.getNext().getNext());
         count--;
 
-        return deleteItem1;
+        return deleteData;
     }
 
     public void addFirst(E data) {
@@ -83,7 +71,7 @@ public class SinglyLinkedList<E> {
     }
 
     public void add(int index, E data) {
-        if (index > count) {
+        if (index > count || index < 0) {
             throw new IndexOutOfBoundsException("Индекс за пределами размера списка. Допустимые индексы {0; " + (count) + "}"
                     + ". Индекс = " + index);
         }
@@ -93,39 +81,33 @@ public class SinglyLinkedList<E> {
             return;
         }
 
-        ListItem<E> newNode = new ListItem<>(data);
-        ListItem<E> previousNode = head;
+        ListItem<E> newItem = new ListItem<>(data);
+        ListItem<E> previousItem = head;
 
         for (int i = 0; i <= index; i++) {
             if (i == index - 1) {
-                if (i == count - 1) {
-                    previousNode.setNext(newNode);
 
-                    count++;
-                    return;
-                }
-
-                newNode.setNext(previousNode.getNext());
-                previousNode.setNext(newNode);
+                newItem.setNext(previousItem.getNext());
+                previousItem.setNext(newItem);
                 count++;
                 return;
             }
 
-            previousNode = previousNode.getNext();
+            previousItem = previousItem.getNext();
         }
     }
 
     public boolean delete(E data) {
-        for (ListItem<E> currentNode = head, previousNode = null; currentNode != null;
-             previousNode = currentNode, currentNode = currentNode.getNext()) {
+        if (Objects.equals(data, head.getData())) {
+            deleteFirst();
+            return true;
+        }
 
-            if (Objects.equals(data, head.getData())) {
-                deleteFirst();
-                return true;
-            }
+        for (ListItem<E> currentItem = head, previousItem = null; currentItem != null;
+             previousItem = currentItem, currentItem = currentItem.getNext()) {
 
-            if (Objects.equals(data, currentNode.getData())) {
-                previousNode.setNext(previousNode.getNext().getNext()); // Todo можно ли заглушить ошибку?
+            if (Objects.equals(currentItem.getData(), data)) {
+                Objects.requireNonNull(previousItem).setNext(previousItem.getNext().getNext());
                 count--;
 
                 return true;
@@ -140,12 +122,12 @@ public class SinglyLinkedList<E> {
             throw new NoSuchElementException("Список пустой.");
         }
 
-        E deleteItem = head.getData();
+        E deletedData = head.getData();
         head = head.getNext();
 
         count--;
 
-        return deleteItem;
+        return deletedData;
     }
 
     public void reverse() {
@@ -164,15 +146,15 @@ public class SinglyLinkedList<E> {
 
     public SinglyLinkedList<E> copy() {
         if (count == 0) {
-            throw new NoSuchElementException("Список пустой.");
+            return new SinglyLinkedList<>();
         }
 
         SinglyLinkedList<E> copy = new SinglyLinkedList<>();
         copy.addFirst(head.getData());
 
-        for (ListItem<E> currentNode = head.getNext(), copyNode = copy.head; currentNode != null; currentNode = currentNode.getNext()) {
-            copyNode.setNext(new ListItem<>(currentNode.getData()));
-            copyNode = copyNode.getNext();
+        for (ListItem<E> currentItem = head.getNext(), copyItem = copy.head; currentItem != null; currentItem = currentItem.getNext()) {
+            copyItem.setNext(new ListItem<>(currentItem.getData()));
+            copyItem = copyItem.getNext();
         }
 
         copy.count = count;
@@ -189,18 +171,22 @@ public class SinglyLinkedList<E> {
 
     @Override
     public String toString() {
+        if (count == 0) {
+            return "{}";
+        }
+
         StringBuilder sb = new StringBuilder();
 
         sb.append('{');
 
-        ListItem<E> currentElement = head;
+        ListItem<E> currentItem = head;
 
         for (int i = 0; i < count - 1; i++) {
-            sb.append(currentElement.getData()).append(", ");
-            currentElement = currentElement.getNext();
+            sb.append(currentItem.getData()).append(", ");
+            currentItem = currentItem.getNext();
         }
 
-        sb.append(currentElement.getData());
+        sb.append(currentItem.getData());
         sb.append('}');
 
         return sb.toString();
