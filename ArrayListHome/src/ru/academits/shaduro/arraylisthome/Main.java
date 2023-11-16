@@ -8,9 +8,9 @@ import java.util.ArrayList;
 import java.util.Arrays;
 
 public class Main {
-    public static void main (String[] args) {
+    public static void main(String[] args) {
         try {
-            ArrayList<String> linesList = getLinesList("input.");
+            ArrayList<String> linesList = getLinesList("input.csv");
             System.out.println(linesList);
         } catch (FileNotFoundException e) {
             System.out.println("Файл не найден.");
@@ -18,25 +18,29 @@ public class Main {
             System.out.println("Ошибка чтения файла.");
         }
 
-        ArrayList<Integer> numbers = new ArrayList<>(Arrays.asList(3, 6, 44, 7, 8, 9, 62));
+        ArrayList<Integer> numbers = new ArrayList<>(Arrays.asList(3, 3, 6, 44, 7, 8, 9, 8, 62));
 
-        getOddNumbersList(numbers);
-        System.out.println(getNoRepeatNumbersList(numbers));
+        System.out.println("Исходный список = " + numbers);
+
+        removingEvenNumbers(numbers);
+
+        System.out.println("Список после удаления четных чисел = " + numbers);
+        System.out.println("Список уникальных элементов = " + getNonRepeatingNumbersList(numbers));
     }
 
-    public static ArrayList<Integer> getNoRepeatNumbersList(ArrayList<Integer> numbers) {
-        ArrayList<Integer> noRepeatNumbers = new ArrayList<>(numbers.size());
+    public static ArrayList<Integer> getNonRepeatingNumbersList(ArrayList<Integer> numbers) {
+        ArrayList<Integer> NonRepeating = new ArrayList<>(numbers.size());
 
         for (Integer number : numbers) {
-            if (!noRepeatNumbers.contains(number)) {
-                noRepeatNumbers.add(number);
+            if (!NonRepeating.contains(number)) {
+                NonRepeating.add(number);
             }
         }
 
-        return noRepeatNumbers;
+        return NonRepeating;
     }
 
-    public static void getOddNumbersList(ArrayList<Integer> numbers) {
+    public static void removingEvenNumbers(ArrayList<Integer> numbers) {
         for (int i = 0; i < numbers.size(); i++) {
             if (numbers.get(i) % 2 == 0) {
                 numbers.remove(i);
