@@ -29,15 +29,15 @@ public class Main {
     }
 
     public static ArrayList<Integer> getNonRepeatingNumbersList(ArrayList<Integer> numbers) {
-        ArrayList<Integer> NonRepeating = new ArrayList<>(numbers.size());
+        ArrayList<Integer> nonRepeating = new ArrayList<>(numbers.size());
 
         for (Integer number : numbers) {
-            if (!NonRepeating.contains(number)) {
-                NonRepeating.add(number);
+            if (!nonRepeating.contains(number)) {
+                nonRepeating.add(number);
             }
         }
 
-        return NonRepeating;
+        return nonRepeating;
     }
 
     public static void removingEvenNumbers(ArrayList<Integer> numbers) {
