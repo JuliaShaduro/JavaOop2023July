@@ -4,25 +4,46 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9d04865c-d343-4356-95cd-58283149fc2d" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/JavaOop2023July.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Range/Range.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Range/src/ru/academits/shaduro/range/Range.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Range/src/ru/academits/shaduro/range/program/Program.java" afterDir="false" />
+    <list default="true" id="9d04865c-d343-4356-95cd-58283149fc2d" name="Changes" comment="испр. имя переменной">
+      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/InternetLesson2/Internet.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/InternetLesson2/src/Main.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/InternetLesson3/InternetLesson3.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/InternetLesson3/src/Asus/Asus.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/InternetLesson4/InternetLesson4.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Practic/Practic.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Practic/src/Main.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Practic/src/SimpleCollection.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Range/src/Test/Pobot.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Range/src/Test/RobotCleaner.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Range/src/Test/Test.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Test/Test.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/myHashTable/myHashTable.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/myHashTable/src/ru/academits/shaduro/myHashTable/main/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/List/src/ru/academits/shaduro/listItem/SinglyLinkedList.java" beforeDir="false" afterPath="$PROJECT_DIR$/List/src/ru/academits/shaduro/listItem/SinglyLinkedList.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/List/src/ru/academits/shaduro/listItem/main/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/List/src/ru/academits/shaduro/listItem/main/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MyArrayList/MyArrayList.iml" beforeDir="false" afterPath="$PROJECT_DIR$/ArrayList/ArrayList.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MyArrayList/src/ru/academits/shaduro/myarraylist/ArrayList.java" beforeDir="false" afterPath="$PROJECT_DIR$/ArrayList/src/ru/academits/shaduro/myarraylist/ArrayList.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MyArrayList/src/ru/academits/shaduro/myarraylist/main/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/ArrayList/src/ru/academits/shaduro/myarraylist/main/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Vector/src/ru/academits/shaduro/vector/Vector.java" beforeDir="false" afterPath="$PROJECT_DIR$/Vector/src/ru/academits/shaduro/vector/Vector.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/myHashTable/src/ru/academits/shaduro/myHashTable/myHashTable.java" beforeDir="false" afterPath="$PROJECT_DIR$/myHashTable/src/ru/academits/shaduro/myHashTable/myHashTable.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/output.html" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="CodeInsightWorkspaceSettings">
+    <option name="optimizeImportsOnTheFly" value="true" />
+  </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
+        <option value="Enum" />
+        <option value="Interface" />
         <option value="Class" />
       </list>
     </option>
@@ -39,18 +60,101 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "jdk.selected.JAVA_MODULE": "19"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;jdk.selected.JAVA_MODULE&quot;: &quot;19&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/dmitr/IdeaProjects/untitled&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;copyright&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\Users\dmitr\IdeaProjects\JavaOop2023July\Range\src\ru\academits\shaduro\range" />
+    <key name="CreateClassDialog.RecentsKey">
+      <recent name="ru.academits.shaduro.matrix" />
+      <recent name="ru.academits.shaduro.shape" />
     </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\dmitr\IdeaProjects\JavaOop2023July\InternetLesson3" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\dmitr\IdeaProjects\JavaOop2023July" />
+      <recent name="C:\Users\dmitr\IdeaProjects\JavaOop2023July\InternetLesson3\src" />
+      <recent name="C:\Users\dmitr\IdeaProjects\JavaOop2023July\Vector\src\ru\academits\shaduro\vector" />
+      <recent name="C:\Users\dmitr\IdeaProjects\JavaOop2023July\Vector" />
+      <recent name="C:\Users\dmitr\IdeaProjects\JavaOop2023July\Test" />
+    </key>
+  </component>
+  <component name="RunManager" selected="Application.Main">
+    <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="ru.academits.shaduro.myHashTable.main.Main" />
+      <module name="myHashTable" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="ru.academits.shaduro.myHashTable.main.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="ru.academits.shaduro.arraylisthome.Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="ru.academits.shaduro.arraylisthome.Main" />
+      <module name="ArrayListHome" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="ru.academits.shaduro.arraylisthome.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="ru.academits.shaduro.csv.main.Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="ru.academits.shaduro.csv.main.Main" />
+      <module name="CSV" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="ru.academits.shaduro.csv.main.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="ru.academits.shaduro.listItem.main.Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="ru.academits.shaduro.listItem.main.Main" />
+      <module name="List" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="ru.academits.shaduro.myarraylist.main.Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="ru.academits.shaduro.myarraylist.main.Main" />
+      <module name="ArrayList" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="ru.academits.shaduro.myarraylist.main.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Application.Main" />
+        <item itemvalue="Application.ru.academits.shaduro.myarraylist.main.Main" />
+        <item itemvalue="Application.ru.academits.shaduro.arraylisthome.Main" />
+        <item itemvalue="Application.ru.academits.shaduro.csv.main.Main" />
+        <item itemvalue="Application.ru.academits.shaduro.listItem.main.Main" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -61,6 +165,287 @@
       <option name="presentableId" value="Default" />
       <updated>1689819093852</updated>
     </task>
+    <task id="LOCAL-00001" summary="Создание проекта Range">
+      <created>1689820305025</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1689820305025</updated>
+    </task>
+    <task id="LOCAL-00002" summary="Add project Shape">
+      <created>1690356664539</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1690356664539</updated>
+    </task>
+    <task id="LOCAL-00003" summary="Add project Shape">
+      <created>1690791754912</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1690791754912</updated>
+    </task>
+    <task id="LOCAL-00004" summary="Add project Vector">
+      <created>1691240711731</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1691240711731</updated>
+    </task>
+    <task id="LOCAL-00005" summary="Корректировка метода пересечения">
+      <created>1691509420071</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1691509420071</updated>
+    </task>
+    <task id="LOCAL-00006" summary="Добавила геттеры и сеттеры.">
+      <created>1691770981335</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1691770981335</updated>
+    </task>
+    <task id="LOCAL-00007" summary="Добавила геттеры и сеттеры.">
+      <created>1691771096730</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1691771096730</updated>
+    </task>
+    <task id="LOCAL-00008" summary="Добавила геттеры и сеттеры.">
+      <created>1691774735754</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1691774735754</updated>
+    </task>
+    <task id="LOCAL-00009" summary="Корректировка ошибок">
+      <created>1691940081235</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1691940081235</updated>
+    </task>
+    <task id="LOCAL-00010" summary="Корректировка ошибок">
+      <created>1691987269788</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1691987269788</updated>
+    </task>
+    <task id="LOCAL-00011" summary="Корректировка ошибок">
+      <created>1691987338923</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1691987338923</updated>
+    </task>
+    <task id="LOCAL-00012" summary="Корректировка ошибок">
+      <created>1692075964689</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1692075964689</updated>
+    </task>
+    <task id="LOCAL-00013" summary="Корректировка ошибок">
+      <created>1692438262892</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1692438262892</updated>
+    </task>
+    <task id="LOCAL-00014" summary="Корректировка ошибок">
+      <created>1692510047551</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1692510047551</updated>
+    </task>
+    <task id="LOCAL-00015" summary="Корректировка ошибок">
+      <created>1692519886880</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1692519886880</updated>
+    </task>
+    <task id="LOCAL-00016" summary="Корректировка ошибок">
+      <created>1692534447485</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1692534447485</updated>
+    </task>
+    <task id="LOCAL-00017" summary="Корректировка ошибок">
+      <created>1693128150692</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1693128150692</updated>
+    </task>
+    <task id="LOCAL-00018" summary="Корректировка ошибок">
+      <created>1693130093020</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1693130093020</updated>
+    </task>
+    <task id="LOCAL-00019" summary="Корректировка ошибок">
+      <created>1693279792491</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1693279792491</updated>
+    </task>
+    <task id="LOCAL-00020" summary="Add project matrix">
+      <created>1693286648142</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1693286648142</updated>
+    </task>
+    <task id="LOCAL-00021" summary="Корректировка объявления массива">
+      <created>1693922973317</created>
+      <option name="number" value="00021" />
+      <option name="presentableId" value="LOCAL-00021" />
+      <option name="project" value="LOCAL" />
+      <updated>1693922973317</updated>
+    </task>
+    <task id="LOCAL-00022" summary="Корректировка лишних пробелов.">
+      <created>1693923558333</created>
+      <option name="number" value="00022" />
+      <option name="presentableId" value="LOCAL-00022" />
+      <option name="project" value="LOCAL" />
+      <updated>1693923558333</updated>
+    </task>
+    <task id="LOCAL-00023" summary="Корректировка лишних пробелов.">
+      <created>1693935654405</created>
+      <option name="number" value="00023" />
+      <option name="presentableId" value="LOCAL-00023" />
+      <option name="project" value="LOCAL" />
+      <updated>1693935654405</updated>
+    </task>
+    <task id="LOCAL-00024" summary="Корректировка лишних пробелов.">
+      <created>1693937320110</created>
+      <option name="number" value="00024" />
+      <option name="presentableId" value="LOCAL-00024" />
+      <option name="project" value="LOCAL" />
+      <updated>1693937320110</updated>
+    </task>
+    <task id="LOCAL-00025" summary="Add Csv">
+      <created>1694409325510</created>
+      <option name="number" value="00025" />
+      <option name="presentableId" value="LOCAL-00025" />
+      <option name="project" value="LOCAL" />
+      <updated>1694409325510</updated>
+    </task>
+    <task id="LOCAL-00026" summary="Корректировка: исключений, конструкторов, get/set Matrix">
+      <created>1694981807640</created>
+      <option name="number" value="00026" />
+      <option name="presentableId" value="LOCAL-00026" />
+      <option name="project" value="LOCAL" />
+      <updated>1694981807640</updated>
+    </task>
+    <task id="LOCAL-00027" summary="Add ArrayListHome">
+      <created>1695369312889</created>
+      <option name="number" value="00027" />
+      <option name="presentableId" value="LOCAL-00027" />
+      <option name="project" value="LOCAL" />
+      <updated>1695369312889</updated>
+    </task>
+    <task id="LOCAL-00028" summary="Add List">
+      <created>1696400365501</created>
+      <option name="number" value="00028" />
+      <option name="presentableId" value="LOCAL-00028" />
+      <option name="project" value="LOCAL" />
+      <updated>1696400365501</updated>
+    </task>
+    <task id="LOCAL-00029" summary="Add List">
+      <created>1696400476309</created>
+      <option name="number" value="00029" />
+      <option name="presentableId" value="LOCAL-00029" />
+      <option name="project" value="LOCAL" />
+      <updated>1696400476309</updated>
+    </task>
+    <task id="LOCAL-00030" summary="Add project myArrayList">
+      <created>1698843257185</created>
+      <option name="number" value="00030" />
+      <option name="presentableId" value="LOCAL-00030" />
+      <option name="project" value="LOCAL" />
+      <updated>1698843257185</updated>
+    </task>
+    <task id="LOCAL-00031" summary="Корректировка имен методов и исключений.">
+      <created>1698916400490</created>
+      <option name="number" value="00031" />
+      <option name="presentableId" value="LOCAL-00031" />
+      <option name="project" value="LOCAL" />
+      <updated>1698916400490</updated>
+    </task>
+    <task id="LOCAL-00032" summary="Заглушка warning">
+      <created>1699003651148</created>
+      <option name="number" value="00032" />
+      <option name="presentableId" value="LOCAL-00032" />
+      <option name="project" value="LOCAL" />
+      <updated>1699003651156</updated>
+    </task>
+    <task id="LOCAL-00033" summary="Корректировка метода clear">
+      <created>1699004437516</created>
+      <option name="number" value="00033" />
+      <option name="presentableId" value="LOCAL-00033" />
+      <option name="project" value="LOCAL" />
+      <updated>1699004437516</updated>
+    </task>
+    <task id="LOCAL-00034" summary="Корректировка имен переменных и конструктора.">
+      <created>1699194589349</created>
+      <option name="number" value="00034" />
+      <option name="presentableId" value="LOCAL-00034" />
+      <option name="project" value="LOCAL" />
+      <updated>1699194589349</updated>
+    </task>
+    <task id="LOCAL-00035" summary="Корректировка пустых строк в ячейках.">
+      <created>1699434911353</created>
+      <option name="number" value="00035" />
+      <option name="presentableId" value="LOCAL-00035" />
+      <option name="project" value="LOCAL" />
+      <updated>1699434911353</updated>
+    </task>
+    <task id="LOCAL-00036" summary="15/11 Корректировка искл в конструкторах. Печать в консоли инфор сообщений.">
+      <created>1700036337500</created>
+      <option name="number" value="00036" />
+      <option name="presentableId" value="LOCAL-00036" />
+      <option name="project" value="LOCAL" />
+      <updated>1700036337500</updated>
+    </task>
+    <task id="LOCAL-00037" summary="16/11 Корректировка имен методов  getOddNumbersList, getNoRepeatNumbersList. Информативный вывод в консоль.">
+      <created>1700107348765</created>
+      <option name="number" value="00037" />
+      <option name="presentableId" value="LOCAL-00037" />
+      <option name="project" value="LOCAL" />
+      <updated>1700107348765</updated>
+    </task>
+    <task id="LOCAL-00038" summary="16/11 Оптимизация методов delete, copy, add.Корректировка имен переменных.">
+      <created>1700116940550</created>
+      <option name="number" value="00038" />
+      <option name="presentableId" value="LOCAL-00038" />
+      <option name="project" value="LOCAL" />
+      <updated>1700116940550</updated>
+    </task>
+    <task id="LOCAL-00039" summary="22/11 Оптимизация методов toString,remove, clear,set,toArray(T1[] a).">
+      <created>1700631270326</created>
+      <option name="number" value="00039" />
+      <option name="presentableId" value="LOCAL-00039" />
+      <option name="project" value="LOCAL" />
+      <updated>1700631270326</updated>
+    </task>
+    <task id="LOCAL-00040" summary="испр. имя переменной">
+      <created>1702272218225</created>
+      <option name="number" value="00040" />
+      <option name="presentableId" value="LOCAL-00040" />
+      <option name="project" value="LOCAL" />
+      <updated>1702272218225</updated>
+    </task>
+    <option name="localTasksCounter" value="41" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -73,5 +458,273 @@
         </entry>
       </map>
     </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Создание проекта Range" />
+    <MESSAGE value="Add project Shape" />
+    <MESSAGE value="Исправлен тип методов" />
+    <MESSAGE value="Add project Vector" />
+    <MESSAGE value="Корректировка метода пересечения" />
+    <MESSAGE value="Добавила геттеры и сеттеры." />
+    <MESSAGE value="Корректировка ошибок" />
+    <MESSAGE value="Add project matrix" />
+    <MESSAGE value="Корректировка объявления массива" />
+    <MESSAGE value="Корректировка лишних пробелов." />
+    <MESSAGE value="Add Csv" />
+    <MESSAGE value="Корректировка: исключений, конструкторов, get/set Matrix" />
+    <MESSAGE value="Add ArrayListHome" />
+    <MESSAGE value="Add List" />
+    <MESSAGE value="Add project myArrayList" />
+    <MESSAGE value="Корректировка имен методов и исключений." />
+    <MESSAGE value="Заглушка warning" />
+    <MESSAGE value="Корректировка метода clear" />
+    <MESSAGE value="Корректировка имен переменных и конструктора." />
+    <MESSAGE value="Корректировка пустых строк в ячейках." />
+    <MESSAGE value="15/11 Корректировка искл в конструкторах. Печать в консоли инфор сообщений." />
+    <MESSAGE value="16/11 Корректировка имен методов  getOddNumbersList, getNoRepeatNumbersList. Информативный вывод в консоль." />
+    <MESSAGE value="16/11 Оптимизация методов delete, copy, add.Корректировка имен переменных." />
+    <MESSAGE value="22/11 Оптимизация методов toString,remove, clear,set,toArray(T1[] a)." />
+    <MESSAGE value="испр. имя переменной" />
+    <option name="LAST_COMMIT_MESSAGE" value="испр. имя переменной" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-method">
+          <url>file://$PROJECT_DIR$/Range/src/Test/Pobot.java</url>
+          <line>9</line>
+          <properties class="Test.Pobot" method="number">
+            <option name="EMULATED" value="true" />
+            <option name="WATCH_EXIT" value="false" />
+          </properties>
+          <option name="timeStamp" value="4" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-method">
+          <url>file://$PROJECT_DIR$/Range/src/Test/RobotCleaner.java</url>
+          <line>13</line>
+          <properties class="Test.RobotCleaner" method="get">
+            <option name="EMULATED" value="true" />
+            <option name="WATCH_EXIT" value="false" />
+          </properties>
+          <option name="timeStamp" value="6" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-method">
+          <url>file://$PROJECT_DIR$/Range/src/Test/RobotCleaner.java</url>
+          <line>8</line>
+          <properties class="Test.RobotCleaner" method="&lt;init&gt;">
+            <option name="EMULATED" value="true" />
+            <option name="WATCH_EXIT" value="false" />
+          </properties>
+          <option name="timeStamp" value="7" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-method">
+          <url>file://$PROJECT_DIR$/Range/src/ru/academits/shaduro/range/Range.java</url>
+          <line>72</line>
+          <properties class="ru.academits.shaduro.range.Range" method="toString">
+            <option name="EMULATED" value="true" />
+            <option name="WATCH_EXIT" value="false" />
+          </properties>
+          <option name="timeStamp" value="38" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-method">
+          <url>file://$PROJECT_DIR$/Matrix/src/ru/academits/shaduro/vector/Vector.java</url>
+          <line>92</line>
+          <properties class="ru.academits.shaduro.vector.Vector">
+            <option name="EMULATED" value="true" />
+            <option name="WATCH_EXIT" value="false" />
+          </properties>
+          <option name="timeStamp" value="58" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-method">
+          <url>file://$PROJECT_DIR$/InternetLesson3/src/test1/Computer.java</url>
+          <line>34</line>
+          <properties class="test1.Computer">
+            <option name="EMULATED" value="true" />
+            <option name="WATCH_EXIT" value="false" />
+          </properties>
+          <option name="timeStamp" value="75" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-method">
+          <url>file://$PROJECT_DIR$/InternetLesson3/src/test1/Computer.java</url>
+          <line>29</line>
+          <properties class="test1.Computer">
+            <option name="EMULATED" value="true" />
+            <option name="WATCH_EXIT" value="false" />
+          </properties>
+          <option name="timeStamp" value="76" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-method">
+          <url>file://$PROJECT_DIR$/InternetLesson3/src/test1/Computer.java</url>
+          <line>118</line>
+          <properties class="test1.Computer">
+            <option name="EMULATED" value="true" />
+            <option name="WATCH_EXIT" value="false" />
+          </properties>
+          <option name="timeStamp" value="79" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-method">
+          <url>file://$PROJECT_DIR$/InternetLesson3/src/test1/Computer.java</url>
+          <line>44</line>
+          <properties class="test1.Computer">
+            <option name="EMULATED" value="true" />
+            <option name="WATCH_EXIT" value="false" />
+          </properties>
+          <option name="timeStamp" value="80" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-method">
+          <url>file://$PROJECT_DIR$/InternetLesson3/src/test1/Computer.java</url>
+          <line>134</line>
+          <properties class="test1.Computer">
+            <option name="EMULATED" value="true" />
+            <option name="WATCH_EXIT" value="false" />
+          </properties>
+          <option name="timeStamp" value="85" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-method">
+          <url>file://$PROJECT_DIR$/InternetLesson3/src/Object/Notebook.java</url>
+          <line>9</line>
+          <properties class="Object.Notebook" method="on">
+            <option name="EMULATED" value="true" />
+            <option name="WATCH_EXIT" value="false" />
+          </properties>
+          <option name="timeStamp" value="88" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-method">
+          <url>file://$PROJECT_DIR$/InternetLesson3/src/Object/Computer.java</url>
+          <line>46</line>
+          <properties class="Object.Computer" method="readCD">
+            <option name="EMULATED" value="true" />
+            <option name="WATCH_EXIT" value="false" />
+          </properties>
+          <option name="timeStamp" value="97" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-method">
+          <url>file://$PROJECT_DIR$/InternetLesson3/src/Object/Computer.java</url>
+          <line>12</line>
+          <properties class="Object.Computer" method="&lt;init&gt;">
+            <option name="EMULATED" value="true" />
+            <option name="WATCH_EXIT" value="false" />
+          </properties>
+          <option name="timeStamp" value="98" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-method">
+          <url>file://$PROJECT_DIR$/Matrix/src/ru/academits/shaduro/vector/Vector.java</url>
+          <line>158</line>
+          <properties class="ru.academits.shaduro.vector.Vector">
+            <option name="EMULATED" value="true" />
+            <option name="WATCH_EXIT" value="false" />
+          </properties>
+          <option name="timeStamp" value="102" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-method">
+          <url>file://$PROJECT_DIR$/Shapes/src/ru/academits/shaduro/shapes/comparators/ShapeAreaComparator.java</url>
+          <line>8</line>
+          <properties class="ru.academits.shaduro.shapes.comparators.ShapeAreaComparator" method="compare">
+            <option name="EMULATED" value="true" />
+            <option name="WATCH_EXIT" value="false" />
+          </properties>
+          <option name="timeStamp" value="105" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-method">
+          <url>file://$PROJECT_DIR$/Shapes/src/ru/academits/shaduro/shapes/Circle.java</url>
+          <line>38</line>
+          <properties class="ru.academits.shaduro.shapes.Circle" method="toString">
+            <option name="EMULATED" value="true" />
+            <option name="WATCH_EXIT" value="false" />
+          </properties>
+          <option name="timeStamp" value="106" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-method">
+          <url>file://$PROJECT_DIR$/Shapes/src/ru/academits/shaduro/shapes/Rectangle.java</url>
+          <line>40</line>
+          <properties class="ru.academits.shaduro.shapes.Rectangle" method="toString">
+            <option name="EMULATED" value="true" />
+            <option name="WATCH_EXIT" value="false" />
+          </properties>
+          <option name="timeStamp" value="107" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-method">
+          <url>file://$PROJECT_DIR$/Shapes/src/ru/academits/shaduro/shapes/Square.java</url>
+          <line>38</line>
+          <properties class="ru.academits.shaduro.shapes.Square" method="toString">
+            <option name="EMULATED" value="true" />
+            <option name="WATCH_EXIT" value="false" />
+          </properties>
+          <option name="timeStamp" value="108" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-method">
+          <url>file://$PROJECT_DIR$/Shapes/src/ru/academits/shaduro/shapes/Triangle.java</url>
+          <line>92</line>
+          <properties class="ru.academits.shaduro.shapes.Triangle" method="toString">
+            <option name="EMULATED" value="true" />
+            <option name="WATCH_EXIT" value="false" />
+          </properties>
+          <option name="timeStamp" value="109" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-method">
+          <url>file://$PROJECT_DIR$/ArrayList/src/ru/academits/shaduro/myarraylist/ArrayList.java</url>
+          <line>127</line>
+          <properties class="ru.academits.shaduro.myarraylist.ArrayList" method="iterator">
+            <option name="EMULATED" value="true" />
+            <option name="WATCH_EXIT" value="false" />
+          </properties>
+          <option name="timeStamp" value="351" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-method">
+          <url>file://$PROJECT_DIR$/ArrayList/src/ru/academits/shaduro/myarraylist/ArrayList.java</url>
+          <line>31</line>
+          <properties class="ru.academits.shaduro.myarraylist.ArrayList.MyListIterator" method="next">
+            <option name="EMULATED" value="true" />
+            <option name="WATCH_EXIT" value="false" />
+          </properties>
+          <option name="timeStamp" value="355" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/InternetLesson3/src/Main.java</url>
+          <line>20</line>
+          <option name="timeStamp" value="99" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/Vector/src/ru/academits/shaduro/vector/main/Main.java</url>
+          <line>6</line>
+          <option name="timeStamp" value="126" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/CSV/src/ru/academits/shaduro/csv/main/Main.java</url>
+          <line>10</line>
+          <option name="timeStamp" value="273" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/Matrix/src/ru/academits/shaduro/matrix/main/Main.java</url>
+          <line>24</line>
+          <option name="timeStamp" value="298" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/ArrayList/src/ru/academits/shaduro/myarraylist/ArrayList.java</url>
+          <line>23</line>
+          <option name="timeStamp" value="352" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/ArrayList/src/ru/academits/shaduro/myarraylist/ArrayList.java</url>
+          <line>28</line>
+          <option name="timeStamp" value="356" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/ArrayList/src/ru/academits/shaduro/myarraylist/main/Main.java</url>
+          <line>21</line>
+          <option name="timeStamp" value="357" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/myHashTable/src/ru/academits/shaduro/myHashTable/main/Main.java</url>
+          <line>29</line>
+          <option name="timeStamp" value="368" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+    <watches-manager>
+      <configuration name="Application">
+        <watch expression="triangle" />
+      </configuration>
+    </watches-manager>
   </component>
 </project>
