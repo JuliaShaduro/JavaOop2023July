@@ -2,7 +2,7 @@ package ru.academits.shaduro.csv;
 
 import java.io.*;
 
-public class Csv {
+public class ConvertCsv {
     public static void convertCsvToHtml(String inputFilePath, String outputFilePath) throws IOException {
         try (BufferedReader bufferedReader = new BufferedReader(new FileReader(inputFilePath));
              PrintWriter writer = new PrintWriter(outputFilePath)) {
@@ -15,10 +15,9 @@ public class Csv {
             writer.println("<body>");
             writer.println("<table border=\"1\">");
 
-            boolean isNewLine = true;
-            boolean isBreakLine = false;
-            boolean isCharacterWriting = true;
-            boolean putComma = false;
+            boolean isNewLine = true;// новая строка
+            boolean isCharacterWriting = true; // записывать символ
+            //     boolean putComma = false;   // ставить запятую
 
             String line;
 
@@ -27,39 +26,36 @@ public class Csv {
 
                 if (isNewLine) {
                     writer.println("    <tr>");
-                    writer.print("        <td><pre>");
-                }
-
-                if (isBreakLine) {
+                    writer.print("        <td>");
+                } else {
                     writer.print("<br/>");
-                    isBreakLine = false;
                 }
 
                 for (int i = 0; i < lineLength; i++) {
                     char lineChar = line.charAt(i);
 
                     if (lineChar == ',') {
-                        if (putComma) {
+                        if (!isNewLine) {
                             writer.print(lineChar);
+                            isNewLine = true;
                             continue;
                         }
 
-                        writer.print("</pre></td>");
+                        writer.print("</td>");
                         writer.println();
-                        writer.print("        <td><pre>");
+                        writer.print("        <td>");
+
                         isCharacterWriting = false;
 
                         if (i + 1 < lineLength) {
                             if (line.charAt(i + 1) == '"') {
                                 i++;
-                                putComma = true;
-                                isBreakLine = true;
+                                //    putComma = true;
                                 isNewLine = false;
                                 isCharacterWriting = true;
                                 continue;
                             }
                         }
-
                     } else if (lineChar == '"') {
                         if (i + 1 < lineLength) {
                             if (line.charAt(i + 1) == '"') {
@@ -68,16 +64,14 @@ public class Csv {
                                 continue;
                             }
 
-                            putComma = false;
-                            isBreakLine = false;
+                            //  putComma = false;
                             isNewLine = true;
                             isCharacterWriting = false;
 
                         } else {
                             isCharacterWriting = false;
                             isNewLine = true;
-                            isBreakLine = false;
-                            putComma = false;
+                            //   putComma = false;
                         }
                     }
 
@@ -89,7 +83,7 @@ public class Csv {
                 }
 
                 if (isNewLine) {
-                    writer.print("</pre></td>");
+                    writer.print("</td>");
                     writer.println();
                     writer.println("    </tr>");
                 }
