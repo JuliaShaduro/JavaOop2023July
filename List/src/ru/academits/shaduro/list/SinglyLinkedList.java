@@ -1,4 +1,4 @@
-package ru.academits.shaduro.listItem;
+package ru.academits.shaduro.list;
 
 import java.util.NoSuchElementException;
 import java.util.Objects;
@@ -6,9 +6,6 @@ import java.util.Objects;
 public class SinglyLinkedList<E> {
     private ListItem<E> head;
     private int count;
-
-    public SinglyLinkedList() {
-    }
 
     public int getCount() {
         return count;
@@ -41,9 +38,8 @@ public class SinglyLinkedList<E> {
     public E set(int index, E data) {
         checkIndex(index);
 
-        ListItem<E> item = getItem(index);
-        E oldData = item.getData();
-        item.setData(data);
+        E oldData = getItem(index).getData();
+        getItem(index).setData(data);
 
         return oldData;
     }
@@ -55,13 +51,13 @@ public class SinglyLinkedList<E> {
             return deleteFirst();
         }
 
-        ListItem<E> previousData = getItem(index - 1);
-        E deleteData = previousData.getNext().getData();
+        ListItem<E> previousItem = getItem(index - 1);
+        E deletedData = previousItem.getNext().getData();
 
-        previousData.setNext(previousData.getNext().getNext());
+        previousItem.setNext(previousItem.getNext().getNext());
         count--;
 
-        return deleteData;
+        return deletedData;
     }
 
     public void addFirst(E data) {
@@ -71,8 +67,8 @@ public class SinglyLinkedList<E> {
     }
 
     public void add(int index, E data) {
-        if (index > count || index < 0) {
-            throw new IndexOutOfBoundsException("Индекс за пределами размера списка. Допустимые индексы {0; " + (count) + "}"
+        if (index < 0 || index > count) {
+            throw new IndexOutOfBoundsException("Индекс за пределами размера списка. Допустимые индексы {0; " + count + "}"
                     + ". Индекс = " + index);
         }
 
@@ -81,33 +77,29 @@ public class SinglyLinkedList<E> {
             return;
         }
 
-        ListItem<E> newItem = new ListItem<>(data);
-        ListItem<E> previousItem = head;
-
         for (int i = 0; i <= index; i++) {
-            if (i == index - 1) {
+            if (i == index) {
+                getItem(i - 1).setNext(new ListItem<>(data, getItem(i)));
 
-                newItem.setNext(previousItem.getNext());
-                previousItem.setNext(newItem);
                 count++;
                 return;
             }
-
-            previousItem = previousItem.getNext();
         }
     }
 
     public boolean delete(E data) {
+        if (count == 0) {
+            return false;
+        }
+
         if (Objects.equals(data, head.getData())) {
             deleteFirst();
             return true;
         }
 
-        for (ListItem<E> currentItem = head, previousItem = null; currentItem != null;
-             previousItem = currentItem, currentItem = currentItem.getNext()) {
-
+        for (ListItem<E> currentItem = head.getNext(), previousItem = head; currentItem != null; previousItem = currentItem, currentItem = currentItem.getNext()) {
             if (Objects.equals(currentItem.getData(), data)) {
-                Objects.requireNonNull(previousItem).setNext(previousItem.getNext().getNext());
+                previousItem.setNext(currentItem.getNext());
                 count--;
 
                 return true;
@@ -186,8 +178,7 @@ public class SinglyLinkedList<E> {
             currentItem = currentItem.getNext();
         }
 
-        sb.append(currentItem.getData());
-        sb.append('}');
+        sb.append(currentItem.getData()).append('}');
 
         return sb.toString();
     }

@@ -1,10 +1,10 @@
-package ru.academits.shaduro.listItem;
+package ru.academits.shaduro.list;
 
 class ListItem<E> {
     private E data;
     private ListItem<E> next;
 
-    public ListItem(E data) {
+    ListItem(E data) {
         this.data = data;
     }
 

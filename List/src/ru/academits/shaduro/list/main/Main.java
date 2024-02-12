@@ -1,6 +1,6 @@
-package ru.academits.shaduro.listItem.main;
+package ru.academits.shaduro.list.main;
 
-import ru.academits.shaduro.listItem.SinglyLinkedList;
+import ru.academits.shaduro.list.SinglyLinkedList;
 
 public class Main {
     public static void main(String[] args) {
@@ -12,12 +12,12 @@ public class Main {
 
         System.out.println("Элемент по индексу = " + numbersList.get(0));
 
-        numbersList.add(4, 15);
-        numbersList.add(5, null);
+        numbersList.add(1, 15);
+        numbersList.add(5, 2);
 
         System.out.println("Список после добавления элемента по индексу = " + numbersList);
 
-        System.out.println("Удалить элемент по значению = " + numbersList.delete(44));
+        System.out.println("Удалить элемент по значению = " + numbersList.delete(2));
         System.out.println("Список после удаления элемента по значению = " + numbersList);
 
         System.out.println("Размер = " + numbersList.getCount());
@@ -29,7 +29,7 @@ public class Main {
         System.out.println();
 
         SinglyLinkedList<Integer> copy = numbersList.copy();
-        System.out.println("Размер copy листа = " + copy.getCount());
+        System.out.println("Размер copy списка = " + copy.getCount());
         System.out.println("Элемент по индексу = " + numbersList.get(3));
         System.out.println("Удалить элемент по значению = " + copy.delete(22));
 
