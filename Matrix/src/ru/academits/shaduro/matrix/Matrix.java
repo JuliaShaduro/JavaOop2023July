@@ -6,7 +6,7 @@ public class Matrix {
     private Vector[] rows;
 
     public Matrix(int rowsCount, int columnsCount) {
-        if (rowsCount == 0 || columnsCount == 0) {
+        if (rowsCount <= 0 || columnsCount <= 0) {
             throw new IllegalArgumentException("Кол-во строк и столбцов должно быть больше 0. Кол-во строк = " + rowsCount
                     + ". Кол-во столбцов = " + columnsCount);
         }
@@ -26,31 +26,27 @@ public class Matrix {
         }
     }
 
-    public Matrix(double[][] coordinates) {
-        if (coordinates.length == 0 || coordinates[0].length == 0) {
-            throw new IllegalArgumentException("Кол-во строк и столбцов должно быть больше 0. Кол-во строк = " + coordinates.length
-                    + ". Кол-во столбцов = 0");
+    public Matrix(double[][] twoDimArray) {
+        if (twoDimArray.length == 0) {
+            throw new IllegalArgumentException("Кол-во строк должно быть больше 0. Кол-во строк = " + twoDimArray.length);
         }
 
-        rows = new Vector[coordinates.length];
+        rows = new Vector[twoDimArray.length];
+
         int rowMaxLength = 0;
 
-        for (double[] coordinate : coordinates) {
-            rowMaxLength = Math.max(rowMaxLength, coordinate.length);
+        for (double[] line : twoDimArray) {
+            rowMaxLength = Math.max(rowMaxLength, line.length);
         }
 
-        for (int i = 0; i < coordinates.length; i++) {
-            rows[i] = new Vector(rowMaxLength, coordinates[i]);
+        for (int i = 0; i < twoDimArray.length; i++) {
+            rows[i] = new Vector(rowMaxLength, twoDimArray[i]);
         }
     }
 
     public Matrix(Vector[] vectors) {
-        if (vectors.length == 0 || vectors[0].getLength() == 0) {
-            throw new IllegalArgumentException("Кол-во строк и столбцов должно быть больше 0. Кол-во строк = " + vectors.length
-                    + ". Кол-во столбцов = 0");
-        }
-
         rows = new Vector[vectors.length];
+
         int rowMaxLength = 0;
 
         for (Vector vector : vectors) {
@@ -107,10 +103,10 @@ public class Matrix {
     }
 
     public void transpose() {
-        int newLight = getColumnsCount();
-        Vector[] columns = new Vector[newLight];
+        int length = getColumnsCount();
+        Vector[] columns = new Vector[length];
 
-        for (int i = 0; i < newLight; i++) {
+        for (int i = 0; i < length; i++) {
             columns[i] = getColumn(i);
         }
 
@@ -132,27 +128,25 @@ public class Matrix {
         Matrix matrix = new Matrix(rows);
 
         double determinant = 1;
-        double epsilon = 1.0e-10;
+        final double epsilon = 1.0e-10;
 
         for (int i = 0; i < rows.length; i++) {
             if (Math.abs(matrix.rows[i].getCoordinate(i)) <= epsilon) {
-                int j = i + 1;
 
-                while (j < rows.length) {
+                for (int j = i + 1; j < rows.length; j++) {
                     if (Math.abs(matrix.rows[j].getCoordinate(i)) > epsilon) {
                         matrix.rows[i].reverse();
 
-                        Vector vectorTemp = matrix.getRow(j);
-                        matrix.setRow(j, matrix.rows[i]);
-                        matrix.setRow(i, vectorTemp);
+                        Vector tempLine = matrix.rows[j];
+                        matrix.rows[j] = matrix.rows[i];
+                        matrix.rows[i] = tempLine;
+
                         break;
                     }
-
-                    j++;
                 }
             }
 
-            for (int j = 1 + i; j < rows.length; j++) {
+            for (int j = i + 1; j < rows.length; j++) {
                 if (Math.abs(matrix.rows[j].getCoordinate(i)) <= epsilon) {
                     continue;
                 }
@@ -205,7 +199,7 @@ public class Matrix {
     }
 
     public void add(Matrix matrix) {
-        Matrix.validationEqualityOfSizes(this, matrix);
+        checkMatrixDim(this, matrix);
 
         for (int i = 0; i < rows.length; i++) {
             rows[i].add(matrix.rows[i]);
@@ -213,7 +207,7 @@ public class Matrix {
     }
 
     public void subtract(Matrix matrix) {
-        Matrix.validationEqualityOfSizes(this, matrix);
+        checkMatrixDim(this, matrix);
 
         for (int i = 0; i < rows.length; i++) {
             rows[i].subtract(matrix.rows[i]);
@@ -221,7 +215,7 @@ public class Matrix {
     }
 
     public static Matrix getSum(Matrix matrix1, Matrix matrix2) {
-        Matrix.validationEqualityOfSizes(matrix1, matrix2);
+        checkMatrixDim(matrix1, matrix2);
         Matrix resultMatrix = new Matrix(matrix1);
         resultMatrix.add(matrix2);
 
@@ -229,7 +223,7 @@ public class Matrix {
     }
 
     public static Matrix getDifference(Matrix matrix1, Matrix matrix2) {
-        Matrix.validationEqualityOfSizes(matrix1, matrix2);
+        checkMatrixDim(matrix1, matrix2);
         Matrix resultMatrix = new Matrix(matrix1);
         resultMatrix.subtract(matrix2);
 
@@ -253,7 +247,7 @@ public class Matrix {
         return resultMatrix;
     }
 
-    private static void validationEqualityOfSizes(Matrix matrix1, Matrix matrix2) {
+    private static void checkMatrixDim(Matrix matrix1, Matrix matrix2) {
         if (matrix1.rows.length != matrix2.rows.length || matrix1.getColumnsCount() != matrix2.getColumnsCount()) {
             throw new IllegalArgumentException("Складывать/вычитать можно только одинаковые по размеру матрицы. Кол-во строк в 1-ой матрице = "
                     + matrix1.rows.length + ". Во 2-ой = " + matrix2.rows.length + ". Кол-во столбцов в 1-ой матрице = " + matrix1.getColumnsCount()

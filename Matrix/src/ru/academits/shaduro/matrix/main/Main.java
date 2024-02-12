@@ -12,29 +12,38 @@ public class Main {
         };
 
         Matrix matrix1 = new Matrix(vectors1);
-        System.out.println("Определитель матрицы1 = " + matrix1.getDeterminant());
+        System.out.println("Определитель матрицы 1 = " + matrix1.getDeterminant());
 
         Vector[] vectors2 = {
-                new Vector(0.0, 0, 7, 2),
+                new Vector(0.0, 7, 2),
                 new Vector(4.0, 5, 0),
                 new Vector(2.0, -7, 0)
         };
 
         Matrix matrix2 = new Matrix(vectors2);
-
-        System.out.println("Умножение матрицы1 на матрицу2 = " + Matrix.getProduct(matrix1, matrix2));
+        System.out.println("Определитель матрицы №2 = " + matrix2.getDeterminant());
+        System.out.println("Умножение матрицы 1 на матрицу 2 = " + Matrix.getProduct(matrix1, matrix2));
 
         matrix2.transpose();
-        System.out.println("Транспонирование матрицы2 = " + matrix2);
+        System.out.println("Транспонирование матрицы 2 = " + matrix2);
 
         Vector[] vectors3 = {
-                new Vector(0, 0.0),
-                new Vector()
+                new Vector(1, 0),
+                new Vector(1, 0)
         };
 
         Matrix matrix3 = new Matrix(vectors3);
+        System.out.println("Матрица №3: " + matrix3);
 
-        double[][] array = {{}, {2, 3}}; // Todo корректность сообщения в искл?
+        double[][] array = {{}, {}, {5}};
+
         Matrix matrix4 = new Matrix(array);
+        System.out.println("Матрица №4: " + matrix4);
+
+        Matrix matrix5 = new Matrix(matrix4);
+        System.out.println("Матрица №5: " + matrix5);
+
+        Matrix matrix6 = new Matrix(-1, -1);
+        System.out.println("Матрица №6: " + matrix6);
     }
 }
