@@ -38,8 +38,10 @@ public class SinglyLinkedList<E> {
     public E set(int index, E data) {
         checkIndex(index);
 
-        E oldData = getItem(index).getData();
-        getItem(index).setData(data);
+        ListItem<E> item = getItem(index);
+
+        E oldData = item.getData();
+        item.setData(data);
 
         return oldData;
     }
@@ -62,7 +64,6 @@ public class SinglyLinkedList<E> {
 
     public void addFirst(E data) {
         head = new ListItem<>(data, head);
-
         count++;
     }
 
@@ -77,14 +78,9 @@ public class SinglyLinkedList<E> {
             return;
         }
 
-        for (int i = 0; i <= index; i++) {
-            if (i == index) {
-                getItem(i - 1).setNext(new ListItem<>(data, getItem(i)));
-
-                count++;
-                return;
-            }
-        }
+        ListItem<E> previousItem = getItem(index - 1);
+        previousItem.setNext(new ListItem<>(data, previousItem.getNext()));
+        count++;
     }
 
     public boolean delete(E data) {
@@ -116,7 +112,6 @@ public class SinglyLinkedList<E> {
 
         E deletedData = head.getData();
         head = head.getNext();
-
         count--;
 
         return deletedData;

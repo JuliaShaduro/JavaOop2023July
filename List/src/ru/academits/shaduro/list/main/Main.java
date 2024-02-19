@@ -12,7 +12,12 @@ public class Main {
 
         System.out.println("Элемент по индексу = " + numbersList.get(0));
 
+        System.out.println("Список после добавления элемента по индексу = " + numbersList);
+
         numbersList.add(1, 15);
+
+        System.out.println("Список после добавления элемента по индексу = " + numbersList);
+
         numbersList.add(5, 2);
 
         System.out.println("Список после добавления элемента по индексу = " + numbersList);
