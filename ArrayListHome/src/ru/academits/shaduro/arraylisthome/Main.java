@@ -21,7 +21,7 @@ public class Main {
 
         System.out.println("Исходный список = " + numbers);
 
-        deleteEvenNumbers(numbers);
+        removeEvenNumbers(numbers);
 
         System.out.println("Список после удаления четных чисел = " + numbers);
         System.out.println("Список уникальных элементов = " + getNonRepeatingNumbersList(numbers));
@@ -39,11 +39,10 @@ public class Main {
         return nonRepeatingNumbersList;
     }
 
-    public static void deleteEvenNumbers(ArrayList<Integer> numbers) {
+    public static void removeEvenNumbers(ArrayList<Integer> numbers) {
         for (int i = 0; i < numbers.size(); i++) {
             if (numbers.get(i) % 2 == 0) {
                 numbers.remove(i);
-
                 i--;
             }
         }
