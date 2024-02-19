@@ -12,7 +12,6 @@ public class Main {
         };
 
         Matrix matrix1 = new Matrix(vectors1);
-        System.out.println("Определитель матрицы 1 = " + matrix1.getDeterminant());
 
         Vector[] vectors2 = {
                 new Vector(0.0, 7, 2),
