@@ -2,8 +2,8 @@ package ru.academits.shaduro.csv;
 
 import java.io.*;
 
-public class ConvertCsv {
-    public static void convertCsvToHtml(String inputFilePath, String outputFilePath) throws IOException {
+public class ConverterCsvToHtml {
+    public static void convert(String inputFilePath, String outputFilePath) throws IOException {
         try (BufferedReader bufferedReader = new BufferedReader(new FileReader(inputFilePath));
              PrintWriter writer = new PrintWriter(outputFilePath)) {
             writer.println("<!DOCTYPE html>");
@@ -15,9 +15,8 @@ public class ConvertCsv {
             writer.println("<body>");
             writer.println("<table border=\"1\">");
 
-            boolean isNewLine = true;// новая строка
-            boolean isCharacterWriting = true; // записывать символ
-            //     boolean putComma = false;   // ставить запятую
+            boolean isNewLine = true;
+            boolean isCharacterWriting = true;
 
             String line;
 
@@ -50,7 +49,6 @@ public class ConvertCsv {
                         if (i + 1 < lineLength) {
                             if (line.charAt(i + 1) == '"') {
                                 i++;
-                                //    putComma = true;
                                 isNewLine = false;
                                 isCharacterWriting = true;
                                 continue;
@@ -64,14 +62,11 @@ public class ConvertCsv {
                                 continue;
                             }
 
-                            //  putComma = false;
                             isNewLine = true;
                             isCharacterWriting = false;
-
                         } else {
                             isCharacterWriting = false;
                             isNewLine = true;
-                            //   putComma = false;
                         }
                     }
 
