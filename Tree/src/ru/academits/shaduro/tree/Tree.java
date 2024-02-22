@@ -3,6 +3,7 @@ package ru.academits.shaduro.tree;
 import java.util.Deque;
 import java.util.LinkedList;
 import java.util.Queue;
+import java.util.function.Consumer;
 
 public class Tree<T extends Comparable<T>> {   //если implements Comparable<T>
 
@@ -215,7 +216,10 @@ public class Tree<T extends Comparable<T>> {   //если implements Comparable<
         queue.add(currentNode);
 
         while (!queue.isEmpty()) {
-            System.out.print(" " + queue.peek().getData());
+           // Consumer<T> consumer = tree -> System.out.print(tree + " ");
+           // consumer.accept(queue.peek().getData());
+            //System.out.print(" " + );
+            print(queue.peek().getData());
             queue.remove();
 
             if (currentNode.getLeft() != null) {
@@ -236,7 +240,11 @@ public class Tree<T extends Comparable<T>> {   //если implements Comparable<
         deque.add(currentNode);
 
         while (currentNode != null) {
-            System.out.print(" " + deque.getLast().getData());
+            // Consumer<T> consumer = tree -> System.out.print(tree + " ");
+            // System.out.print(" " + deque.getLast().getData());
+            //  consumer.accept(deque.getLast().getData());
+            print(deque.getLast().getData());
+
             deque.removeLast();
 
             if (currentNode.getRight() != null) {
@@ -255,12 +263,22 @@ public class Tree<T extends Comparable<T>> {   //если implements Comparable<
         isDepthSearching(root);
     }
 
+    private void print(T data) {
+        Consumer<T> consumer = tree -> System.out.print(tree + " ");
+        consumer.accept(data);
+    }
+
     private void isDepthSearching(TreeNode<T> head) {
         if (head == null) {
             return;
         }
 
-        System.out.print(head.getData() + " ");
+        print(head.getData()); // - 3-ая
+
+//        Consumer<T> consumer = tree -> System.out.print(tree + " "); // - 2-ая в
+//        consumer.accept(head.getData());
+
+        // System.out.print(head.getData() + " ");  - 1-ая в
 
         if (head.getLeft() != null) {
             isDepthSearching(head.getLeft());
