@@ -41,7 +41,7 @@ public class ArrayList<E> implements List<E> {
 
     private class ArrayListIterator implements Iterator<E> {
         private int currentIndex = -1;
-        private final int startModCount = modCount;
+        private final int initialModCount = modCount;
 
         public boolean hasNext() {
             return currentIndex + 1 < size;
@@ -52,8 +52,8 @@ public class ArrayList<E> implements List<E> {
                 throw new NoSuchElementException("Коллекция закончилась.");
             }
 
-            if (startModCount != modCount) {
-                throw new ConcurrentModificationException("Коллекция была одновременно изменена другим потоком.");
+            if (initialModCount != modCount) {
+                throw new ConcurrentModificationException("Коллекция была изменена.");
             }
 
             currentIndex++;
@@ -79,14 +79,31 @@ public class ArrayList<E> implements List<E> {
         checkIndexForAdd(index);
 
         if (size >= items.length) {
-            ensureCapacity(items.length);
+            ensureCapacity();
         }
 
-        System.arraycopy(items, index, items, index + 1, size - index);
+        if (index != size) {
+            System.arraycopy(items, index, items, index + 1, size - index);
+        }
 
         items[index] = item;
         size++;
         modCount++;
+    }
+
+    private void ensureCapacity() {
+        if (items.length == 0) {
+            items = Arrays.copyOf(items, DEFAULT_CAPACITY);
+            return;
+        }
+
+        items = Arrays.copyOf(items, items.length * 2);
+    }
+
+    public void ensureCapacity(int capacity) {
+        if (capacity > items.length) {
+            items = Arrays.copyOf(items, capacity);
+        }
     }
 
     @Override
@@ -94,38 +111,25 @@ public class ArrayList<E> implements List<E> {
         return addAll(size, c);
     }
 
-    /*
-6. ensureCapacity(int minCapacity):
-- if (minCapacity == 0) - этой логики быть не должно - Todo почему? Если созданный список с 0 размером new ArrayList<>(0), вроде логично по DEFAULT сделать размер ;
-*/
-    public void ensureCapacity(int capacity) {
-        if (capacity == 0) {
-            items = Arrays.copyOf(items, DEFAULT_CAPACITY);
-            return;
-        }
-
-        items = Arrays.copyOf(items, capacity * 2);
-    }
-
     @Override
     public boolean addAll(int index, Collection<? extends E> c) {
-        checkCollection(c);
-
-            /*5. addAll с индексом:
-- if (inputCollectionSize > (items.length - size)) - эта проверка не нужна, - /Todo почему она не нужна ? Если нам хватает места, для чего использовать метод capacity?
-аналогичная проверка должна быть внутри самого метода ensureCapacity
-- size - можно изменить за 1 раз*/
         checkIndexForAdd(index);
 
-        if (c.size() > (items.length - size)) {
-            ensureCapacity(c.size() + size);  //Todo создается в 2-а раза больше массив . Возможно, должна быть точный размер из 2-списков?
+        if (c.size() == 0) {
+            return false;
         }
 
-        System.arraycopy(items, index, items, index + c.size(), size - index);
+        ensureCapacity(size + c.size());
+
+        if (index != size) {
+            System.arraycopy(items, index, items, index + c.size(), size - index);
+        }
+
+        int i = index;
 
         for (E item : c) {
-            items[index] = item;
-            index++;
+            items[i] = item;
+            i++;
         }
 
         size += c.size();
@@ -146,7 +150,7 @@ public class ArrayList<E> implements List<E> {
     public E remove(int index) {
         checkIndex(index);
 
-        E removeItem = items[index];
+        E deletedItem = items[index];
 
         System.arraycopy(items, index + 1, items, index, size - index - 1);
 
@@ -154,7 +158,7 @@ public class ArrayList<E> implements List<E> {
         size--;
         modCount++;
 
-        return removeItem;
+        return deletedItem;
     }
 
     @Override
@@ -172,7 +176,9 @@ public class ArrayList<E> implements List<E> {
 
     @Override
     public boolean retainAll(Collection<?> c) {
-        checkCollection(c);
+        if (c.size() == 0) {
+            return false;
+        }
 
         boolean isRemoved = false;
 
@@ -188,7 +194,9 @@ public class ArrayList<E> implements List<E> {
 
     @Override
     public boolean removeAll(Collection<?> c) {
-        checkCollection(c);
+        if (c.size() == 0) {
+            return false;
+        }
 
         boolean isRemoved = false;
 
@@ -219,7 +227,9 @@ public class ArrayList<E> implements List<E> {
 
     @Override
     public boolean containsAll(Collection<?> c) {
-        checkCollection(c);
+        if (c.size() == 0) {
+            return false;
+        }
 
         for (Object o : c) {
             if (!contains(o)) {
@@ -236,18 +246,20 @@ public class ArrayList<E> implements List<E> {
     }
 
     @Override
-    public <T> T[] toArray(T[] a) {  // преобразуем список элементов в массив
-        if (a.length < size) {
-            //noinspection unchecked
-            return (T[]) Arrays.copyOf(items, size, a.getClass());
+    public <T> T[] toArray(T[] array) {
+        if (array.length == 0) {
+            throw new NullPointerException("Массив равен 0.");
         }
 
-        for (int i = 0; i < size; i++) {
+        if (array.length < size) {
             //noinspection unchecked
-            a[i] = (T) items[i];
+            return (T[]) Arrays.copyOf(items, size, array.getClass());
         }
 
-        return a;
+        //noinspection SuspiciousSystemArraycopy
+        System.arraycopy(items, 0, array, 0, size);
+
+        return array;
     }
 
     @Override
@@ -256,7 +268,7 @@ public class ArrayList<E> implements List<E> {
             return;
         }
 
-        Arrays.fill(items, null);
+        Arrays.fill(items, 0, size, null);
         size = 0;
         modCount++;
     }
@@ -300,17 +312,19 @@ public class ArrayList<E> implements List<E> {
 
     @Override
     public String toString() {
-        StringBuilder st = new StringBuilder().append('[');
-
-        if (size != 0) {
-            for (int i = 0; i < size; i++) {
-                st.append(items[i]).append(", ");
-            }
-
-            st.delete(st.length() - 2, st.length());
+        if (size == 0) {
+            return "[]";
         }
 
-        return st.append(']').toString();
+        StringBuilder sb = new StringBuilder().append('[');
+
+        for (int i = 0; i < size; i++) {
+            sb.append(items[i]).append(", ");
+        }
+
+        sb.delete(sb.length() - 2, sb.length());
+
+        return sb.append(']').toString();
     }
 
     private void checkIndexForAdd(int index) {
@@ -327,12 +341,6 @@ public class ArrayList<E> implements List<E> {
         if (index < 0 || index >= size) {
             throw new IndexOutOfBoundsException("Индекс за пределами размера списка. Допустимые индексы {0; " + (size - 1) + "}"
                     + ". Текущий индекс = " + index);
-        }
-    }
-
-    private void checkCollection(Collection<?> c) {
-        if (c.size() == 0) {
-            throw new NullPointerException("Входящая коллекция пустая.");
         }
     }
 }

@@ -6,65 +6,70 @@ import java.util.Arrays;
 
 public class Main {
     public static void main(String[] args) {
-        ArrayList<Integer> numbersFirstList = new ArrayList<>(3);
+        ArrayList<Integer> list1 = new ArrayList<>(0);
 
-        numbersFirstList.add(16);
-        System.out.println("Список №1: " + numbersFirstList);
-        System.out.println("Размер списка №1 = " + numbersFirstList.size());
+        list1.add(16);
+        System.out.println("Список №1: " + list1);
+        System.out.println("Размер списка №1 = " + list1.size());
 
-        numbersFirstList.add(5);
-        numbersFirstList.add(21);
-        numbersFirstList.add(45);
-        numbersFirstList.add(null);
-        numbersFirstList.add(5);
+        list1.add(5);
+        list1.add(21);
+        list1.add(45);
+        list1.add(null);
 
-        System.out.println("Список №1: " + numbersFirstList);
-        System.out.println("Индекс по значению = " + numbersFirstList.indexOf(null));
-        System.out.println("Последний индекс по значению = " + numbersFirstList.lastIndexOf(5));
-        System.out.println("Удаленный элемент = " + numbersFirstList.remove(2));
-        System.out.println("Список №1 после удаления элемента = " + numbersFirstList);
+        list1.add(4, 17);
+
+        for (Integer value : list1) {
+            System.out.print(value + " ");
+        }
+
+        System.out.println();
+        System.out.println("Список №1: " + list1);
+        System.out.println("Индекс по значению = " + list1.indexOf(null));
+        System.out.println("Последний индекс по значению = " + list1.lastIndexOf(5));
+        System.out.println("Удаленный элемент = " + list1.remove(2));
+        System.out.println("Список №1 после удаления элемента = " + list1);
         System.out.println("------------------------");
 
+        ArrayList<Integer> list2 = new ArrayList<>(0);
+        list2.add(17);
+        list2.add(1542);
+        list2.add(796);
+        list2.add(null);
 
-        ArrayList<Integer> numbersSecondList = new ArrayList<>(0);
-        numbersSecondList.add(5);
-        numbersSecondList.add(1542);
-        numbersSecondList.add(796);
-        numbersSecondList.add(null);
+        Object[] array1 = list2.toArray();
+        System.out.println("toArray(): " + Arrays.toString(array1));
 
-        Object[] objectsArray = numbersSecondList.toArray();
-        System.out.println("toArray(): " + Arrays.toString(objectsArray));
+        Integer[] array2 = list2.toArray(new Integer[5]);
+        System.out.println("toArray(T[] a integers1): " + Arrays.toString(array2));
 
-        Integer[] integersFirstArray = numbersSecondList.toArray(new Integer[6]);
-        System.out.println("toArray(T[] a integers1): " + Arrays.toString(integersFirstArray));
+        Number[] array3 = list2.toArray(new Integer[8]);
+        System.out.println("toArray(T[] a integers2): " + Arrays.toString(array3));
 
-        Number[] integersSecondArray = numbersSecondList.toArray(new Integer[8]);
-        System.out.println("toArray(T[] a integers2): " + Arrays.toString(integersSecondArray));
+        list1.addAll(5, list2);
+        System.out.println("Список №1 после добавления списка №2: " + list1);
+        System.out.println("Размер списка №1 = " + list1.size());
 
-        numbersFirstList.addAll(2, numbersSecondList);
-        System.out.println("Список №1 после добавления списка №2: " + numbersFirstList);
-        System.out.println("Размер списка №1 = " + numbersFirstList.size());
+        list2.add(0, 16);
 
-        numbersSecondList.add(0,16);
+        System.out.println("Список №2: " + list2);
+        System.out.println("Размер списка №2 = " + list2.size());
 
-        System.out.println("Список №2: " + numbersSecondList);
-        System.out.println("Размер списка №2 = " + numbersSecondList.size());
-
-        ArrayList<String> stringsList = new ArrayList<>();
-        stringsList.add("Hello");
-        stringsList.add(null);
-        stringsList.add("coffee");
-        stringsList.add("coffee");
+        ArrayList<String> list3 = new ArrayList<>();
+        list3.add("Hello");
+        list3.add(null);
+        list3.add("coffee");
+        list3.add("coffee");
         System.out.println("------------------------");
 
-        String[] stringsArray = stringsList.toArray(new String[3]);
+        String[] stringsArray = list3.toArray(new String[3]);
 
         System.out.println("Массив array: " + Arrays.toString(stringsArray));
         System.out.println("Длина массива array = " + stringsArray.length);
 
-        stringsList.clear();
+        list3.clear();
 
-        System.out.println("Список String  после удаления всех элементов: " + stringsList);
+        System.out.println("Список String после удаления всех элементов: " + list3);
 
         ArrayList<Long> longsList = new ArrayList<>();
         longsList.add(256633L);
@@ -73,10 +78,6 @@ public class Main {
         System.out.println("Массив Long: " + longsList);
 
         Long[] arrayLong = new Long[5];
-
-        /*
-- есть warning'и*/
-
-        numbersFirstList.toArray(arrayLong);  //Todo нужно ли бросать искл. ArrayStoreException?
+        list1.toArray(arrayLong);
     }
 }
