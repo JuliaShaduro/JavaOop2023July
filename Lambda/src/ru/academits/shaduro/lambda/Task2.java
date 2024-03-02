@@ -3,10 +3,6 @@ package ru.academits.shaduro.lambda;
 import java.util.Scanner;
 import java.util.stream.Stream;
 
-/*Создать бесконечный поток корней чисел. С консоли
-прочитать число – сколько элементов нужно вычислить,
-затем – распечатать эти элементы.
-*/
 public class Task2 {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
@@ -15,10 +11,11 @@ public class Task2 {
 
         Stream.iterate(new int[]{0, 1}, array -> new int[]{array[1], array[0] + array[1]})
                 .limit(scanner.nextInt())
-                .map(array -> array [0])
+                .map(array -> array[0])
                 .forEach(System.out::println);
 
-        System.out.println("___________");
+        System.out.print("Введите кол-во элементов для вычисления корней = ");
+
 // Todo Какая еще структура данных может подойти под эту задачу ?
 
 //        Пробник # 2
@@ -34,6 +31,12 @@ public class Task2 {
 //                .toArray();
 //
 //        System.out.println(Arrays.toString(stream));
+
+        int elementCount = scanner.nextInt(); // Todo Если scanner.nextInt() напрямую указывать в iterator то уходит в бесконечность. Это с чем связанно?
+
+        Stream.iterate(elementCount, x -> x - 1)
+                .map(Math::sqrt)
+                .limit(elementCount)
+                .forEach(System.out::println);
     }
 }
-
