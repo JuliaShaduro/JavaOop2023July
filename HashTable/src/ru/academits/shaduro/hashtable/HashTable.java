@@ -1,19 +1,19 @@
-package ru.academits.shaduro.listshashtable;
+package ru.academits.shaduro.hashtable;
 
 import java.util.*;
 
-public class ListsHashTable<E> implements Collection<E> {
+public class HashTable<E> implements Collection<E> {
     private final ArrayList<E>[] lists;
     private int size;
     private int modCount;
     private static final int DEFAULT_CAPACITY = 16;
 
-    public ListsHashTable() {
+    public HashTable() {
         //noinspection unchecked
         lists = (ArrayList<E>[]) new ArrayList[DEFAULT_CAPACITY];
     }
 
-    public ListsHashTable(int initialCapacity) {
+    public HashTable(int initialCapacity) {
         if (initialCapacity <= 0) {
             throw new IllegalArgumentException("Переданное значение capacity = " + initialCapacity + " , должно быть > 0");
         }
@@ -24,12 +24,12 @@ public class ListsHashTable<E> implements Collection<E> {
 
     private class ListIterator implements Iterator<E> {
         private int listIndex;
-        private final int startModCount = modCount;
         private int listElementIndex;
-        private int visitedElementCount;
+        private final int initial = modCount;
+        private int visitedElementsCount;
 
         public boolean hasNext() {
-            return visitedElementCount < size;
+            return visitedElementsCount < size;
         }
 
         public E next() {
@@ -37,17 +37,21 @@ public class ListsHashTable<E> implements Collection<E> {
                 throw new NoSuchElementException("Коллекция закончилась.");
             }
 
-            if (startModCount != modCount) {
-                throw new ConcurrentModificationException("Коллекция была одновременно изменена другим потоком.");
+            if (initial != modCount) {
+                throw new ConcurrentModificationException("Коллекция была изменена.");
             }
 
-            if (lists[listIndex].size() == listElementIndex) {
+            if (lists[listIndex] == null || lists[listIndex].size() == listElementIndex) {
                 listIndex++;
                 listElementIndex = 0;
+
+                while (lists[listIndex] == null) {
+                    listIndex++;
+                }
             }
 
             E element = lists[listIndex].get(listElementIndex);
-            visitedElementCount++;
+            visitedElementsCount++;
             listElementIndex++;
 
             return element;
@@ -63,16 +67,14 @@ public class ListsHashTable<E> implements Collection<E> {
     public boolean contains(Object o) {
         int index = getIndex(o);
 
-        if (lists[index] == null) {
-            return false;
-        }
-
-        return lists[index].contains(o);
+        return lists[index] != null && lists[index].contains(o);
     }
 
     @Override
     public boolean containsAll(Collection<?> c) {
-        checkCollection(c);
+        if (c.isEmpty()) {
+            return false;
+        }
 
         for (Object e : c) {
             if (!contains(e)) {
@@ -102,30 +104,45 @@ public class ListsHashTable<E> implements Collection<E> {
 
     @Override
     public boolean removeAll(Collection<?> c) {
-        checkCollection(c);
-
-        boolean isRemove = false;
-
-        for (ArrayList<E> list : lists) {
-            list.removeAll(c);
-            isRemove = true;
+        if (size == 0 || c.isEmpty()) {
+            return false;
         }
 
-        return isRemove;
+        boolean isRemoved = false;
+
+        for (Object element : c) {
+            if (remove(element)) {
+                isRemoved = true;
+            }
+        }
+
+        return isRemoved;
     }
 
     @Override
-    public boolean retainAll(Collection<?> c) {
-        checkCollection(c);
-
-        boolean isRetain = false;
-
-        for (ArrayList<E> list : lists) {
-            list.retainAll(c);
-            isRetain = true;
+    public boolean retainAll(Collection<?> c) { // удаляет элементы, не принадлежащие переданной коллекции
+        if (size == 0 || c.isEmpty()) {
+            return false;
         }
 
-        return isRetain;
+        boolean isRemoved = false;
+
+        for (ArrayList<E> list : lists) {
+            if (list != null) {
+                int currentSize = list.size();
+
+                if (list.retainAll(c)) {
+                    size -= currentSize - list.size();
+                    isRemoved = true;
+                }
+            }
+        }
+
+        if (isRemoved) {
+            modCount++;
+        }
+
+        return isRemoved;
     }
 
     @Override
@@ -146,7 +163,9 @@ public class ListsHashTable<E> implements Collection<E> {
 
     @Override
     public boolean addAll(Collection<? extends E> c) {
-        checkCollection(c);
+        if (c.isEmpty()) {
+            return false;
+        }
 
         for (E element : c) {
             add(element);
@@ -211,31 +230,19 @@ public class ListsHashTable<E> implements Collection<E> {
     }
 
     @Override
-    public <T1> T1[] toArray(T1[] a) {
-        if (a.length < size) {
-            a = Arrays.copyOf(a, size);
+    public <T> T[] toArray(T[] array) {
+        if (array.length == 0) {
+            throw new NullPointerException("Массив равен 0.");
         }
 
-        int i = 0;
-
-        for (ArrayList<E> list : lists) {
-            if (list == null) {
-                continue;
-            }
-
-            for (E element : list) {
-                //noinspection unchecked
-                a[i] = (T1) element;
-                i++;
-            }
+        if (array.length < size) {
+            //noinspection unchecked
+            return (T[]) Arrays.copyOf(toArray(), size, array.getClass());
         }
 
-        return a;
-    }
+        //noinspection SuspiciousSystemArraycopy
+        System.arraycopy(toArray(), 0, array, 0, size);
 
-    private void checkCollection(Collection<?> c) {
-        if (c == null) {
-            throw new NullPointerException("Передаваемая коллекция null.");
-        }
+        return array;
     }
 }
