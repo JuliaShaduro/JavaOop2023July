@@ -2,7 +2,7 @@ package ru.academits.shaduro.csv;
 
 import java.io.*;
 
-public class ConverterCsvToHtml {
+public class CsvToHtmlConverter {
     public static void convert(String inputFilePath, String outputFilePath) throws IOException {
         try (BufferedReader bufferedReader = new BufferedReader(new FileReader(inputFilePath));
              PrintWriter writer = new PrintWriter(outputFilePath)) {
@@ -92,7 +92,7 @@ public class ConverterCsvToHtml {
 
     private static void writeChar(PrintWriter writer, char symbol) {
         if (symbol == '>') {
-            writer.print("gt;");
+            writer.print("&gt;");
         } else if (symbol == '<') {
             writer.print("&lt;");
         } else if (symbol == '&') {
