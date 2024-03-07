@@ -32,11 +32,15 @@ public class Task2 {
 //
 //        System.out.println(Arrays.toString(stream));
 
-        int elementCount = scanner.nextInt(); // Todo Если scanner.nextInt() напрямую указывать в iterator то уходит в бесконечность. Это с чем связанно?
+        int elementCount = scanner.nextInt(); // Todo Если scanner.nextInt() напрямую указывать в limit то уходит в бесконечность. Это с чем связанно?
+        // Todo логика вроде как в Фибоначчи.
 
-        Stream.iterate(elementCount, x -> x - 1)
-                .map(Math::sqrt)
+        Stream.iterate(0, x -> x + 1)
                 .limit(elementCount)
-                .forEach(System.out::println);
+                .map(Math::sqrt)
+                .forEach(number -> {
+                    System.out.printf(" %.2f", number);
+                    System.out.println();
+                });
     }
 }
