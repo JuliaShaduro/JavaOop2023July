@@ -7,7 +7,7 @@ public class Matrix {
 
     public Matrix(int rowsCount, int columnsCount) {
         if (rowsCount <= 0 || columnsCount <= 0) {
-            throw new IllegalArgumentException("Кол-во строк и столбцов должно быть больше 0. \nКол-во строк = " + rowsCount
+            throw new IllegalArgumentException("Кол-во строк и столбцов должно быть больше 0. Кол-во строк = " + rowsCount
                     + ". Кол-во столбцов = " + columnsCount);
         }
 
@@ -67,7 +67,7 @@ public class Matrix {
         }
     }
 
-    public int getRowsCount() { //
+    public int getRowsCount() {
         return rows.length;
     }
 
@@ -89,7 +89,7 @@ public class Matrix {
         }
 
         if (vector.getCoordinatesCount() != getColumnsCount()) {
-            throw new IllegalArgumentException("Разная длина строк.\nДлина передаваемой строки = " + vector.getCoordinatesCount()
+            throw new IllegalArgumentException("Разная длина строк. Длина передаваемой строки = " + vector.getCoordinatesCount()
                     + ". Длина строки в матрице = " + getColumnsCount());
         }
 
@@ -111,10 +111,9 @@ public class Matrix {
     }
 
     public void transpose() {
-        int length = getColumnsCount();
-        Vector[] columns = new Vector[length];
+        Vector[] columns = new Vector[getColumnsCount()];
 
-        for (int i = 0; i < length; i++) {
+        for (int i = 0; i < columns.length; i++) {
             columns[i] = getColumn(i);
         }
 
@@ -129,10 +128,9 @@ public class Matrix {
 
     public double getDeterminant() {
         if (rows.length != getColumnsCount()) {
-            throw new UnsupportedOperationException("Определитель можно вычислить только для квадратной матрицы."
-                    + "\nКол-во строк в матрице = " + rows.length + ". Кол-во столбцов в матрице = " + getColumnsCount());
+            throw new UnsupportedOperationException("Определитель можно вычислить только для квадратной матрицы. Кол-во строк в матрице = "
+                    + rows.length + ". Кол-во столбцов в матрице = " + getColumnsCount());
         }
-
 
         Matrix matrix = new Matrix(rows);
 
@@ -193,7 +191,7 @@ public class Matrix {
     public Vector multiplyByVector(Vector vector) {
         if (vector.getCoordinatesCount() != getColumnsCount()) {
             throw new IllegalArgumentException("Количество элементов в векторе должно совпадать с количеством столбцов в матрице. "
-                    + "\nКоличество столбцов в матрице = " + getColumnsCount()
+                    + "Количество столбцов в матрице = " + getColumnsCount()
                     + ". Количество элементов в векторе = " + vector.getCoordinatesCount());
         }
 
@@ -242,7 +240,8 @@ public class Matrix {
 
     public static Matrix getProduct(Matrix matrix1, Matrix matrix2) {
         if (matrix1.getColumnsCount() != matrix2.rows.length) {
-            throw new IllegalArgumentException("Кол-во столбцов в 1-ой матрице неравно количеству строк во второй матрице. \nКол-во столбцов в 1-ой матрице = "
+            throw new IllegalArgumentException("Кол-во столбцов в 1-ой матрице неравно количеству строк во второй матрице."
+                    + " Кол-во столбцов в 1-ой матрице = "
                     + matrix1.getColumnsCount() + ". Кол-ву строк во 2-ой матрице = " + matrix2.rows.length);
         }
 
@@ -259,8 +258,8 @@ public class Matrix {
 
     private static void checkMatricesEquality(Matrix matrix1, Matrix matrix2) {
         if (matrix1.rows.length != matrix2.rows.length || matrix1.getColumnsCount() != matrix2.getColumnsCount()) {
-            throw new IllegalArgumentException("Складывать/вычитать можно только одинаковые по размеру матрицы.\nКол-во строк в 1-ой матрице = "
-                    + matrix1.rows.length + ". Во 2-ой = " + matrix2.rows.length + ".\nКол-во столбцов в 1-ой матрице = " + matrix1.getColumnsCount()
+            throw new IllegalArgumentException("Складывать/вычитать можно только одинаковые по размеру матрицы. Кол-во строк в 1-ой матрице = "
+                    + matrix1.rows.length + ". Во 2-ой = " + matrix2.rows.length + ". Кол-во столбцов в 1-ой матрице = " + matrix1.getColumnsCount()
                     + ". Во 2-ой = " + matrix2.getColumnsCount());
         }
     }
