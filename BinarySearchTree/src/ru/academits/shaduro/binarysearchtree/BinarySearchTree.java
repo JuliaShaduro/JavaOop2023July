@@ -1,4 +1,4 @@
-package ru.academits.shaduro.binarytree;
+package ru.academits.shaduro.binarysearchtree;
 
 import java.util.Comparator;
 import java.util.Deque;
@@ -6,32 +6,33 @@ import java.util.LinkedList;
 import java.util.Queue;
 import java.util.function.Consumer;
 
-public class BinaryTree<E> {
+public class BinarySearchTree<E> {
     private TreeNode<E> root;
     private int size;
-    private Comparator<? super E> comparator;
+    private final Comparator<E> comparator;
 
-    public BinaryTree(Comparator<? super E> comparator) {
+    public BinarySearchTree(Comparator<E> comparator) {
         this.comparator = comparator;
     }
 
-    public BinaryTree() {
+    public BinarySearchTree() {
+        comparator = null;
     }
 
     private int compare(E data1, E data2) {
-        if (data1 == null && data2 != null) {
-            return -1;
-        }
-
-        if (data1 != null && data2 == null) {
-            return 1;
-        }
-
-        if (data1 == null) {
-            return 0;
-        }
-
         if (comparator == null) {
+            if (data1 == null && data2 == null) {
+                return 0;
+            }
+
+            if (data1 == null) {
+                return -1;
+            }
+
+            if (data2 == null) {
+                return 1;
+            }
+
             //noinspection unchecked
             return ((Comparable<E>) data1).compareTo(data2);
         }
@@ -44,9 +45,6 @@ public class BinaryTree<E> {
     }
 
     public void add(E data) {
-        /*Вставка значений NULL в TreeSet вызывает исключение NullPointerException
-         , поскольку при вставке значения NULL оно сравнивается с существующими элементами,
-         а значение NULL нельзя сравнивать ни с каким значением.*/
         if (root == null) {
             root = new TreeNode<>(data);
             size++;
@@ -98,30 +96,11 @@ public class BinaryTree<E> {
     }
 
     public boolean remove(E data) {
-        if (size == 0) {
-            return false;
-        }
-
-        if (compare(root.getData(), data) == 0) {
-            if (size == 1) {
-                root = null;
-            } else if (root.getLeft() == null) {
-                root = root.getRight();
-            } else if (root.getRight() == null) {
-                root = root.getLeft();
-            } else {
-                root = removeNodeWithTwoChildren(root);
-            }
-
-            size--;
-            return true;
-        }
-
         TreeNode<E> currentNode = root;
         TreeNode<E> previousNode = null;
         boolean isLeft = true;
 
-        while (currentNode != null) { //Todo повторная проверка !
+        while (currentNode != null) {
             int comparisonResult = compare(currentNode.getData(), data);
 
             if (comparisonResult > 0) {
@@ -144,61 +123,51 @@ public class BinaryTree<E> {
     }
 
     private void removeNode(boolean isLeft, TreeNode<E> currentNode, TreeNode<E> previousNode) {
-        if (currentNode.getLeft() == null && currentNode.getRight() == null) {// Todo не нравится этот метод. Постоянно проверяю сторону вставки. Что поменять?
-            if (isLeft) {
-                previousNode.setLeft(null);
-            } else {
-                previousNode.setRight(null);
-            }
+        TreeNode<E> removedNodeChild;
+
+        if (currentNode.getLeft() == null && currentNode.getRight() == null) {
+            removedNodeChild = null;
         } else if (currentNode.getLeft() == null) {
-            if (isLeft) {
-                previousNode.setLeft(currentNode.getRight());
-            } else {
-                previousNode.setRight(currentNode.getRight());
-            }
+            removedNodeChild = currentNode.getRight();
         } else if (currentNode.getRight() == null) {
-            if (isLeft) {
-                previousNode.setLeft(currentNode.getLeft());
+            removedNodeChild = currentNode.getLeft();
+        } else {
+            removedNodeChild = removeNodeWithTwoChildren(currentNode);
+        }
+
+        if (isLeft) {
+            if (previousNode == null) {
+                root = removedNodeChild;
             } else {
-                previousNode.setRight(currentNode.getLeft());
+                previousNode.setLeft(removedNodeChild);
             }
         } else {
-            if (isLeft) {
-                previousNode.setLeft(removeNodeWithTwoChildren(currentNode));
-                return;
-            }
-
-            previousNode.setRight(removeNodeWithTwoChildren(currentNode));
+            previousNode.setRight(removedNodeChild);
         }
     }
 
-    private TreeNode<E> removeNodeWithTwoChildren(TreeNode<E> deleteNode) {
-        TreeNode<E> minLeftNodeParent = deleteNode.getRight();
+    private TreeNode<E> removeNodeWithTwoChildren(TreeNode<E> remotedNode) {
+        TreeNode<E> minLeftNodeParent = remotedNode.getRight();
         TreeNode<E> minLeftNode = minLeftNodeParent.getLeft();
 
-        if (minLeftNode != null) {
+        if (minLeftNode == null) {
+            minLeftNode = minLeftNodeParent;
+            minLeftNode.setLeft(remotedNode.getLeft());
+        } else {
             while (minLeftNode.getLeft() != null) {
                 minLeftNodeParent = minLeftNode;
                 minLeftNode = minLeftNode.getLeft();
             }
 
-            if (minLeftNode.getRight() != null) {
-                minLeftNodeParent.setLeft(minLeftNode.getRight());
-            } else {
-                minLeftNodeParent.setLeft(null);
-            }
-
-            minLeftNode.setLeft(deleteNode.getLeft());
-            minLeftNode.setRight(deleteNode.getRight());
-        } else {
-            minLeftNode = minLeftNodeParent;
-            minLeftNode.setLeft(deleteNode.getLeft());
+            minLeftNodeParent.setLeft(minLeftNode.getRight());
+            minLeftNode.setLeft(remotedNode.getLeft());
+            minLeftNode.setRight(remotedNode.getRight());
         }
 
         return minLeftNode;
     }
 
-    public void visitInWidth(Consumer<E> consumer) {   //обход в ширину
+    public void visitInWidth(Consumer<E> consumer) {
         if (root == null) {
             return;
         }
@@ -211,16 +180,16 @@ public class BinaryTree<E> {
             consumer.accept(queueNode.getData());
 
             if (queueNode.getLeft() != null) {
-                queue.offer(queueNode.getLeft());
+                queue.add(queueNode.getLeft());
             }
 
             if (queueNode.getRight() != null) {
-                queue.offer(queueNode.getRight());
+                queue.add(queueNode.getRight());
             }
         }
     }
 
-    public void visitInDepth(Consumer<E> consumer) { //обход в глубину
+    public void visitInDepth(Consumer<E> consumer) {
         if (root == null) {
             return;
         }
@@ -242,7 +211,7 @@ public class BinaryTree<E> {
         }
     }
 
-    public void visitInDeepWithRecursion(Consumer<E> consumer) {//обход в глубину с рекурсией
+    public void visitInDepthWithRecursion(Consumer<E> consumer) {
         if (root == null) {
             return;
         }
@@ -250,15 +219,15 @@ public class BinaryTree<E> {
         visitInDepth(root, consumer);
     }
 
-    private void visitInDepth(TreeNode<E> node, Consumer<E> consume) {
-        consume.accept(node.getData());
+    private void visitInDepth(TreeNode<E> node, Consumer<E> consumer) {
+        consumer.accept(node.getData());
 
         if (node.getLeft() != null) {
-            visitInDepth(node.getLeft(), consume);
+            visitInDepth(node.getLeft(), consumer);
         }
 
         if (node.getRight() != null) {
-            visitInDepth(node.getRight(), consume);
+            visitInDepth(node.getRight(), consumer);
         }
     }
 }

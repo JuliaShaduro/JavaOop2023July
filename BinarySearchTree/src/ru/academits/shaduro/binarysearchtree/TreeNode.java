@@ -1,18 +1,12 @@
-package ru.academits.shaduro.binarytree;
+package ru.academits.shaduro.binarysearchtree;
 
 class TreeNode<T> {
     private TreeNode<T> left;
     private TreeNode<T> right;
     private final T data;
 
-    TreeNode(T data) {
+    public TreeNode(T data) {
         this.data = data;
-    }
-
-    public TreeNode(T data, TreeNode<T> left, TreeNode<T> right) {
-        this.data = data;
-        this.left = left;
-        this.right = right;
     }
 
     public TreeNode<T> getLeft() {
