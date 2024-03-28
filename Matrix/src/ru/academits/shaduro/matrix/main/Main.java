@@ -20,7 +20,11 @@ public class Main {
         };
 
         Matrix matrix2 = new Matrix(vectors2);
+
         System.out.println("Определитель матрицы №2 = " + matrix2.getDeterminant());
+        System.out.println("Matrix1: " + matrix1);
+        System.out.println("Matrix2: " + matrix2);
+
         System.out.println("Умножение матрицы 1 на матрицу 2 = " + Matrix.getProduct(matrix1, matrix2));
 
         matrix2.transpose();

@@ -89,7 +89,7 @@ public class Matrix {
         }
 
         if (vector.getCoordinatesCount() != getColumnsCount()) {
-            throw new IllegalArgumentException("Разная длина строк. Длина передаваемой строки = " + vector.getCoordinatesCount()
+            throw new IllegalArgumentException("Разная длина строк. Длина переданной строки = " + vector.getCoordinatesCount()
                     + ". Длина строки в матрице = " + getColumnsCount());
         }
 
@@ -241,8 +241,8 @@ public class Matrix {
     public static Matrix getProduct(Matrix matrix1, Matrix matrix2) {
         if (matrix1.getColumnsCount() != matrix2.rows.length) {
             throw new IllegalArgumentException("Кол-во столбцов в 1-ой матрице неравно количеству строк во второй матрице."
-                    + " Кол-во столбцов в 1-ой матрице = "
-                    + matrix1.getColumnsCount() + ". Кол-ву строк во 2-ой матрице = " + matrix2.rows.length);
+                    + " Кол-во столбцов в 1-ой матрице = " + matrix1.getColumnsCount()
+                    + ". Кол-ву строк во 2-ой матрице = " + matrix2.rows.length);
         }
 
         Matrix resultMatrix = new Matrix(matrix1.rows.length, matrix2.getColumnsCount());
@@ -259,7 +259,9 @@ public class Matrix {
     private static void checkMatricesEquality(Matrix matrix1, Matrix matrix2) {
         if (matrix1.rows.length != matrix2.rows.length || matrix1.getColumnsCount() != matrix2.getColumnsCount()) {
             throw new IllegalArgumentException("Складывать/вычитать можно только одинаковые по размеру матрицы. Кол-во строк в 1-ой матрице = "
-                    + matrix1.rows.length + ". Во 2-ой = " + matrix2.rows.length + ". Кол-во столбцов в 1-ой матрице = " + matrix1.getColumnsCount()
+                    + matrix1.rows.length + ". Во 2-ой = "
+                    + matrix2.rows.length + ". Кол-во столбцов в 1-ой матрице = "
+                    + matrix1.getColumnsCount()
                     + ". Во 2-ой = " + matrix2.getColumnsCount());
         }
     }
