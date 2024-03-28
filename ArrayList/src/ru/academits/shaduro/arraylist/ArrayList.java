@@ -79,7 +79,7 @@ public class ArrayList<E> implements List<E> {
         checkIndexForAdd(index);
 
         if (size >= items.length) {
-            ensureCapacity();
+            increaseCapacity();
         }
 
         if (index != size) {
@@ -91,7 +91,7 @@ public class ArrayList<E> implements List<E> {
         modCount++;
     }
 
-    private void ensureCapacity() {
+    private void increaseCapacity() {
         if (items.length == 0) {
             items = Arrays.copyOf(items, DEFAULT_CAPACITY);
             return;
@@ -100,7 +100,7 @@ public class ArrayList<E> implements List<E> {
         items = Arrays.copyOf(items, items.length * 2);
     }
 
-    public void ensureCapacity(int capacity) {
+    public void increaseCapacity(int capacity) {
         if (capacity > items.length) {
             items = Arrays.copyOf(items, capacity);
         }
@@ -115,11 +115,11 @@ public class ArrayList<E> implements List<E> {
     public boolean addAll(int index, Collection<? extends E> c) {
         checkIndexForAdd(index);
 
-        if (c.size() == 0) {
+        if (c.isEmpty()) {
             return false;
         }
 
-        ensureCapacity(size + c.size());
+        increaseCapacity(size + c.size());
 
         if (index != size) {
             System.arraycopy(items, index, items, index + c.size(), size - index);
@@ -150,7 +150,7 @@ public class ArrayList<E> implements List<E> {
     public E remove(int index) {
         checkIndex(index);
 
-        E deletedItem = items[index];
+        E removedItem = items[index];
 
         System.arraycopy(items, index + 1, items, index, size - index - 1);
 
@@ -158,7 +158,7 @@ public class ArrayList<E> implements List<E> {
         size--;
         modCount++;
 
-        return deletedItem;
+        return removedItem;
     }
 
     @Override
@@ -175,10 +175,10 @@ public class ArrayList<E> implements List<E> {
     }
 
     @Override
-    public boolean retainAll(Collection<?> c) {
-        if (c.size() == 0) {
-            return false;
-        }
+    public boolean retainAll(Collection<?> c) { // Сохраняет только те элементы этой коллекции, которые содержатся в указанной коллекции //
+//        if (c.isEmpty()) {
+//            throw new NullPointerException("Переданная коллекция равна нулю");
+//        }
 
         boolean isRemoved = false;
 
@@ -193,10 +193,14 @@ public class ArrayList<E> implements List<E> {
     }
 
     @Override
-    public boolean removeAll(Collection<?> c) {
-        if (c.size() == 0) {
-            return false;
-        }
+    public boolean removeAll(Collection<?> c) {  // NullPointerException— если эта коллекция содержит один
+        // или несколько нулевых элементов
+        // и указанная коллекция не поддерживает нулевые элементы ( необязательно ),
+        // или если указанная коллекция имеет значение NULL.//
+
+//        if (c.isEmpty()) {
+//            throw new NullPointerException("Переданная коллекция равна нулю");
+//        }
 
         boolean isRemoved = false;
 
@@ -227,8 +231,8 @@ public class ArrayList<E> implements List<E> {
 
     @Override
     public boolean containsAll(Collection<?> c) {
-        if (c.size() == 0) {
-            return false;
+        if (c.isEmpty()) {
+            throw new NullPointerException("Переданная коллекция равна нулю");
         }
 
         for (Object o : c) {
@@ -247,10 +251,6 @@ public class ArrayList<E> implements List<E> {
 
     @Override
     public <T> T[] toArray(T[] array) {
-        if (array.length == 0) {
-            throw new NullPointerException("Массив равен 0.");
-        }
-
         if (array.length < size) {
             //noinspection unchecked
             return (T[]) Arrays.copyOf(items, size, array.getClass());
@@ -258,6 +258,10 @@ public class ArrayList<E> implements List<E> {
 
         //noinspection SuspiciousSystemArraycopy
         System.arraycopy(items, 0, array, 0, size);
+
+        if (array.length > size) {
+            array[size] = null;
+        }
 
         return array;
     }
@@ -329,7 +333,7 @@ public class ArrayList<E> implements List<E> {
 
     private void checkIndexForAdd(int index) {
         if (index < 0 || index > size) {
-            throw new IndexOutOfBoundsException("Индекс " + index + " за пределами диапазона {0: " + size + "}.");
+            throw new IndexOutOfBoundsException("Индекс " + index + " за пределами диапазона {0: " + size + "}");
         }
     }
 
@@ -339,7 +343,7 @@ public class ArrayList<E> implements List<E> {
         }
 
         if (index < 0 || index >= size) {
-            throw new IndexOutOfBoundsException("Индекс за пределами размера списка. Допустимые индексы {0; " + (size - 1) + "}"
+            throw new IndexOutOfBoundsException("Индекс " + index + " за пределами диапазона {0; " + (size - 1) + "}"
                     + ". Текущий индекс = " + index);
         }
     }

@@ -9,6 +9,10 @@ public class Main {
         ArrayList<Integer> list1 = new ArrayList<>(0);
 
         list1.add(16);
+        list1.add(23);
+        list1.add(4);
+        list1.add(5);
+
         System.out.println("Список №1: " + list1);
         System.out.println("Размер списка №1 = " + list1.size());
 
@@ -77,7 +81,7 @@ public class Main {
 
         System.out.println("Массив Long: " + longsList);
 
-        Long[] arrayLong = new Long[5];
-        list1.toArray(arrayLong);
+        Long[] longArray = new Long[5];
+        list1.toArray(longArray);
     }
 }
